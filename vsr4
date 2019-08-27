@@ -169,7 +169,7 @@ echo "Router (Network Side) Configuration"
             no shutdown
         exit
         interface "vsr4-vsr2"
-            address 10.1.1.9/30
+            address 10.1.1.6/30
             port 1/1/2:5
             no shutdown
         exit
@@ -212,7 +212,7 @@ echo "ISIS Configuration"
                 ipv4-node-sid index 1
                 no shutdown
             exit
-            interface "vsr3-vsr5"
+            interface "vsr4-vsr2"
                 interface-type point-to-point
                 level 1
                     metric 1000
@@ -222,7 +222,7 @@ echo "ISIS Configuration"
                 exit
                 no shutdown
             exit
-            interface "vsr3-vsr1"
+            interface "vsr4-vsr5"
                 interface-type point-to-point
                 level 1
                     metric 25000
@@ -251,10 +251,10 @@ echo "MPLS Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr3-vsr5"
+            interface "vsr4-vsr2"
                 no shutdown
             exit
-            interface "vsr3-vsr1"
+            interface "vsr4-vsr5"
                 no shutdown
             exit
         exit
@@ -266,10 +266,10 @@ echo "RSVP Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr3-vsr5"
+            interface "vsr4-vsr2"
                 no shutdown
             exit
-            interface "vsr3-vsr1"
+            interface "vsr4-vsr5"
                 no shutdown
             exit
             no shutdown
