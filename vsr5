@@ -163,12 +163,12 @@ echo "Router (Network Side) Configuration"
             address 100.64.0.5/32
             no shutdown
         exit
-        interface "vsr5-vsr4"
+        interface "vsr5-vsr3"
             address 10.1.1.2/30
             port 1/1/1:5
             no shutdown
         exit
-        interface "vsr5-vsr3"
+        interface "vsr5-vsr4"
             address 10.1.1.10/30
             port 1/1/2:5
             no shutdown

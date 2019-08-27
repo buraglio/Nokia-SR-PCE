@@ -54,7 +54,7 @@
 /configure system sync-if-timing begin
 /configure system sync-if-timing commit
 /configure router management
-/configure router Base interface "system" address 172.16.0.1/32
+/configure router Base interface "system" address 100.64.0.1/32
 /configure router Base interface "system" no shutdown
 /configure router Base interface "vsr1-vsr2" address 10.1.1.17/30
 /configure router Base interface "vsr1-vsr2" port 1/1/1:5
@@ -64,7 +64,7 @@
 /configure router Base interface "vsr1-vsr3" no shutdown
 /configure router Base autonomous-system 65505
 /configure router Base ecmp 2
-/configure router Base router-id 172.16.0.1
+/configure router Base router-id 100.64.0.1
 /configure router Base mpls-labels sr-labels start 20001 end 20200
 /configure router Base isis 0 area-id 49.0001
 /configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
@@ -87,7 +87,7 @@
 /configure router Base isis 0 interface "vsr1-vsr2" level 2 metric 25000
 /configure router Base isis 0 interface "vsr1-vsr2" no shutdown
 /configure router Base isis 0 no shutdown
-/configure router Base pcep pcc local-address 172.16.0.1
+/configure router Base pcep pcc local-address 100.64.0.1
 /configure router Base pcep pcc no shutdown
 /configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
