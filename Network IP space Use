@@ -1,0 +1,11 @@
+Network Utilization
+
+100.64.0.0/24 Loopbacks
+172.16.0.0/24 PCE Connectivity
+
+
+10.1.1.0/30 vsr1-vsr3
+10.1.1.16/30 vsr1-vsr2
+10.1.1.4/30 vsr2-vsr4
+10.1.1.8/30 vsr3-vsr5
+  

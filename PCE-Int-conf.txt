@@ -1,0 +1,52 @@
+vsr1
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr1-pce1" address 172.16.0.248/24
+/configure router Base interface "vsr1-pce1" port 2/1/1
+/configure router Base interface "vsr1-pce1" no shutdown
+
+vsr2
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr2-pce1" address 172.16.0.249/24
+/configure router Base interface "vsr2-pce1" port 2/1/1
+/configure router Base interface "vsr2-pce1" no shutdown
+
+vsr3
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr3-pce1" address 172.16.0.250/24
+/configure router Base interface "vsr3-pce1" port 2/1/1
+/configure router Base interface "vsr3-pce1" no shutdown
+
+vsr4
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr4-pce1" address 172.16.0.251/24
+/configure router Base interface "vsr4-pce1" port 2/1/1
+/configure router Base interface "vsr4-pce1" no shutdown
+
+vsr5
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr5-pce1" address 172.16.0.252/24
+/configure router Base interface "vsr5-pce1" port 2/1/1
+/configure router Base interface "vsr5-pce1" no shutdown
+
+vsr6
+/configure port 2/1/1 shutdown
+/configure port 2/1/1 ethernet no encap-type
+/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 no shutdown
+/configure router Base interface "vsr6-pce1" address 172.16.0.253/24
+/configure router Base interface "vsr6-pce1" port 2/1/1
+/configure router Base interface "vsr6-pce1" no shutdown

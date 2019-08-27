@@ -1,0 +1,8 @@
+#!/bin/bash
+
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr1 > vsr1-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr2 > vsr2-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr3 > vsr3-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr4 > vsr4-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr5 > vsr5-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr6 > vsr6-flat.txt

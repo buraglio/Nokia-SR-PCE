@@ -1,0 +1,192 @@
+# TiMOS-C-19.5.R2 cpm/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
+
+# Generated FRI AUG 16 15:46:45 2019 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "vsr5"
+        time
+            sntp
+                shutdown
+            exit
+            zone UTC
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            per-peer-queuing
+            cpu-protection
+                policy 254 create
+                exit
+                policy 255 create
+                exit
+            exit
+            dist-cpu-protection
+                policy "_default-access-policy" create
+                exit
+                policy "_default-network-policy" create
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "Switch Fabric Configuration"
+#--------------------------------------------------
+    sfm 1
+        sfm-type m-sfm5-12e
+        no shutdown
+    exit
+    sfm 2
+        sfm-type m-sfm5-12e
+        no shutdown
+    exit
+    sfm 3
+        sfm-type m-sfm5-12e
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom4-e-b
+        mda 1
+            mda-type me2-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
+    card 2
+        card-type iom4-e-b
+        mda 1
+            mda-type me2-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/1
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 1/1/2
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 2/1/1
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 2/1/2
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "system"
+            address 100.64.0.5/32
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "Pcep Configuration"
+#--------------------------------------------------
+        pcep
+            pcc
+                local-address 100.64.0.5
+                no shutdown
+            exit
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+    exit
+
+
+exit all

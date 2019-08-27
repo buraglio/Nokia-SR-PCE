@@ -1,0 +1,104 @@
+/configure system name "vsr2"
+/configure system time sntp shutdown
+/configure system time zone UTC
+/configure system security per-peer-queuing
+/configure system security cpu-protection policy 254 create
+/configure system security cpu-protection policy 254
+/configure system security cpu-protection policy 255 create
+/configure system security dist-cpu-protection policy "_default-access-policy" create
+/configure system security dist-cpu-protection policy "_default-access-policy"
+/configure system security dist-cpu-protection policy "_default-network-policy" create
+/configure log
+/configure sfm 1 sfm-type m-sfm5-12e
+/configure sfm 1 no shutdown
+/configure sfm 2 sfm-type m-sfm5-12e
+/configure sfm 2 no shutdown
+/configure sfm 3 sfm-type m-sfm5-12e
+/configure sfm 3 no shutdown
+/configure card 1 card-type iom4-e-b
+/configure card 1 mda 1 mda-type me2-100gb-qsfp28
+/configure card 1 mda 1 no shutdown
+/configure card 1 no shutdown
+/configure card 2 card-type iom4-e-b
+/configure card 2 mda 1 mda-type me2-100gb-qsfp28
+/configure card 2 mda 1 no shutdown
+/configure card 2 no shutdown
+/configure port 1/1/1 ethernet encap-type dot1q
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
+/configure port 1/1/1 no shutdown
+/configure port 1/1/2 ethernet encap-type dot1q
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
+/configure port 1/1/2 no shutdown
+/configure port 2/1/1 ethernet encap-type dot1q
+/configure port 2/1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 2/1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 2/1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 2/1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 2/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
+/configure port 2/1/1 no shutdown
+/configure port 2/1/2 ethernet encap-type dot1q
+/configure port 2/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 2/1/2 ethernet lldp dest-mac nearest-bridge notification
+/configure port 2/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 2/1/2 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 2/1/2 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
+/configure port 2/1/2 no shutdown
+/configure system sync-if-timing begin
+/configure system sync-if-timing commit
+/configure router management
+/configure router Base interface "system" address 100.64.0.2/32
+/configure router Base interface "system" no shutdown
+/configure router Base interface "vsr2-vsr1" address 10.1.1.18/30
+/configure router Base interface "vsr2-vsr1" port 1/1/1:5
+/configure router Base interface "vsr2-vsr1" no shutdown
+/configure router Base interface "vsr2-vsr4" address 10.1.1.5/30
+/configure router Base interface "vsr2-vsr4" port 1/1/2:5
+/configure router Base interface "vsr2-vsr4" no shutdown
+/configure router Base autonomous-system 65505
+/configure router Base ecmp 2
+/configure router Base router-id 100.64.0.2
+/configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 area-id 49.0001
+/configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
+/configure router Base isis 0 traffic-engineering
+/configure router Base isis 0 advertise-router-capability area
+/configure router Base isis 0 loopfree-alternates remote-lfa node-protect
+/configure router Base isis 0 loopfree-alternates ti-lfa max-sr-frr-labels 1 node-protect
+/configure router Base isis 0 level 1 wide-metrics-only
+/configure router Base isis 0 level 2 wide-metrics-only
+/configure router Base isis 0 segment-routing prefix-sid-range global
+/configure router Base isis 0 segment-routing no shutdown
+/configure router Base isis 0 interface "system" ipv4-node-sid index 1
+/configure router Base isis 0 interface "system" no shutdown
+/configure router Base isis 0 interface "vsr2-vsr4" interface-type point-to-point
+/configure router Base isis 0 interface "vsr2-vsr4" level 1 metric 1000
+/configure router Base isis 0 interface "vsr2-vsr4" level 2 metric 1000
+/configure router Base isis 0 interface "vsr2-vsr4" no shutdown
+/configure router Base isis 0 interface "vsr2-vsr1" interface-type point-to-point
+/configure router Base isis 0 interface "vsr2-vsr1" level 1 metric 25000
+/configure router Base isis 0 interface "vsr2-vsr1" level 2 metric 25000
+/configure router Base isis 0 interface "vsr2-vsr1" no shutdown
+/configure router Base isis 0 no shutdown
+/configure router Base pcep pcc local-address 100.64.0.2
+/configure router Base pcep pcc no shutdown
+/configure router Base mpls shutdown
+/configure router Base mpls interface "system" no shutdown
+/configure router Base mpls interface "vsr2-vsr4" no shutdown
+/configure router Base mpls interface "vsr2-vsr1" no shutdown
+/configure router Base rsvp shutdown
+/configure router Base rsvp refresh-reduction-over-bypass enable
+/configure router Base rsvp interface "system" no shutdown
+/configure router Base rsvp interface "vsr2-vsr4" no shutdown
+/configure router Base rsvp interface "vsr2-vsr1" no shutdown
+/configure router Base mpls
+/configure service customer 1 name "1" create
+/configure service customer 1 name "1" description "Default customer"
+/configure router Base isis 0 no shutdown
