@@ -9,4 +9,4 @@ Included here are the Test configurations for PCE testing with Nokia SROS as wel
 3. vsr* Nokia SROS configurations as stored in the flash. Usable in the "startup configuration" for Eve-NG
 4. Nokia PCE Lab.unl - the Eve-NG XML file that is the lab
 
-![alt text](PCE Eve-NG Test Topology.png "Router Topology")
+![Router Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/PCE%20Eve-NG%20Test%20Topology.png?raw=true "Router Topology")
