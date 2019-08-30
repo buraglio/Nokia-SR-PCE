@@ -4,6 +4,7 @@ Network Utilization
 172.16.0.0/24 PCE Connectivity
 
 
+10.0.0.0/24 point to point (inside Eve-NG Lab)
 10.1.1.0/30 vsr1-vsr3
 10.1.1.16/30 vsr1-vsr2
 10.1.1.4/30 vsr2-vsr4
