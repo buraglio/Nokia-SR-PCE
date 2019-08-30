@@ -4,10 +4,35 @@ Network Utilization
 172.16.0.0/24 PCE Connectivity
 
 
-10.0.0.0/24 point to point (inside Eve-NG Lab)
 10.1.1.0/30 vsr1-vsr3
 10.1.1.16/30 vsr1-vsr2
 10.1.1.4/30 vsr2-vsr4
 10.1.1.8/30 vsr3-vsr5
 10.1.1.12/30 vsr6-vsr4
 10.1.1.20/30 vsr6-vsr2
+
+
+10.4.5.0/24 data plane
+172.16.0.0/24 control plane
+
+Data Plane:
+Side A -
+10.4.5.42   nfm-p-a.lan
+10.4.5.43   nrc-p-a.lan
+10.4.5.44   nrc-a.lan
+
+Side B -
+10.4.5.45   nfm-p-b.lan
+10.4.5.46   nrc-p-b.lan
+10.4.5.47   nrc-b.lan
+
+Control Plane:
+Side A -
+172.16.0.42   nfm-p-a.lan
+172.16.0.43   nrc-p-a.lan
+172.16.0.44   nrc-a.lan
+
+Side B -
+172.16.0.45   nfm-p-b.lan
+172.16.0.46   nrc-p-b.lan
+172.16.0.47   nrc-b.lan
