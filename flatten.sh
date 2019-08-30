@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Requires transcode-sros
+# adust paths accordingly
+
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr1 > vsr1-flat.txt
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr2 > vsr2-flat.txt
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr3 > vsr3-flat.txt
