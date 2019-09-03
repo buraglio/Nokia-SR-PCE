@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated FRI AUG 16 15:37:03 2019 UTC
+# Generated TUE SEP 03 22:00:51 2019 UTC
 
 exit all
 configure
@@ -112,7 +112,7 @@ echo "Port Configuration"
     exit
     port 2/1/1
         ethernet
-            encap-type dot1q
+            mode access
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -160,7 +160,18 @@ echo "Router (Network Side) Configuration"
 #--------------------------------------------------
     router Base
         interface "system"
-            address 100.64.0.2/32
+            address 100.64.10.2/32
+            no shutdown
+        exit
+        interface "vsr1-pce1"
+            no shutdown
+        exit
+        interface "vsr2-pce"
+            address 172.16.0.2/24
+            no shutdown
+        exit
+        interface "vsr2-pce1"
+            address 10.4.5.2/24
             no shutdown
         exit
         interface "vsr2-vsr1"
@@ -175,7 +186,7 @@ echo "Router (Network Side) Configuration"
         exit
         autonomous-system 65505
         ecmp 2
-        router-id 100.64.0.2
+        router-id 100.64.10.2
 #--------------------------------------------------
 echo "MPLS Label Range Configuration"
 #--------------------------------------------------
@@ -212,16 +223,6 @@ echo "ISIS Configuration"
                 ipv4-node-sid index 1
                 no shutdown
             exit
-            interface "vsr2-vsr4"
-                interface-type point-to-point
-                level 1
-                    metric 1000
-                exit
-                level 2
-                    metric 1000
-                exit
-                no shutdown
-            exit
             interface "vsr2-vsr1"
                 interface-type point-to-point
                 level 1
@@ -232,6 +233,16 @@ echo "ISIS Configuration"
                 exit
                 no shutdown
             exit
+            interface "vsr2-vsr4"
+                interface-type point-to-point
+                level 1
+                    metric 1000
+                exit
+                level 2
+                    metric 1000
+                exit
+                no shutdown
+            exit
             no shutdown
         exit
 #--------------------------------------------------
@@ -239,7 +250,7 @@ echo "Pcep Configuration"
 #--------------------------------------------------
         pcep
             pcc
-                local-address 100.64.0.2
+                local-address 100.64.10.2
                 no shutdown
             exit
         exit
@@ -251,10 +262,10 @@ echo "MPLS Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr2-vsr4"
+            interface "vsr2-vsr1"
                 no shutdown
             exit
-            interface "vsr2-vsr1"
+            interface "vsr2-vsr4"
                 no shutdown
             exit
         exit
@@ -267,10 +278,10 @@ echo "RSVP Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr2-vsr4"
+            interface "vsr2-vsr1"
                 no shutdown
             exit
-            interface "vsr2-vsr1"
+            interface "vsr2-vsr4"
                 no shutdown
             exit
         exit

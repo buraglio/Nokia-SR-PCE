@@ -40,3 +40,4 @@ Side B -
 
 Routers
 172.16.0.1/24 vsr1 PCE Connectivity
+172.16.0.2/24 vsr2 PCE Connectivity
