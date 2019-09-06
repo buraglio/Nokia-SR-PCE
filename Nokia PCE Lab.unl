@@ -22,14 +22,12 @@
         <interface id="2" name="1/1/1" type="ethernet" network_id="12"/>
         <interface id="3" name="1/1/2" type="ethernet" network_id="9"/>
       </node>
-      <node id="16" name="Linux" type="qemu" template="linux" image="linux-ubuntu-desktop-18.04.2" console="vnc" cpu="4" cpulimit="0" ram="4096" ethernet="1" uuid="537fafb4-6fb6-415e-8146-3a8202705ef0" shutdown="1" firstmac="50:02:00:10:00:00" delay="0" icon="Server.png" config="0" left="1077" top="1374">
-        <interface id="0" name="e0" type="ethernet" network_id="23"/>
-      </node>
+      <node id="16" name="Linux" type="qemu" template="linux" image="linux-ubuntu-desktop-18.04.2" console="vnc" cpu="4" cpulimit="0" ram="4096" ethernet="1" uuid="537fafb4-6fb6-415e-8146-3a8202705ef0" shutdown="1" firstmac="50:02:00:10:00:00" delay="0" icon="Server.png" config="0" left="1077" top="1374"/>
       <node id="15" name="R2" type="qemu" template="timoscpm" image="timoscpm-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="2" uuid="01ba3c19-7f51-4c0a-8bd2-ecdd23f0509f" firstmac="50:02:00:0f:00:00" timos_line="slot=A chassis=SR-12e card=cpm5" timos_license="cf3:\lic" management_address="172.16.5.2/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS.png" config="3" left="495" top="441">
         <interface id="0" name="Mgmt" type="ethernet" network_id="2"/>
         <interface id="1" name="SF" type="ethernet" network_id="13"/>
       </node>
-      <node id="1" name="R1" type="qemu" template="timoscpm" image="timoscpm-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="2" uuid="01ba3c19-7f51-4c0a-8bd2-ecdd23f0509f" firstmac="50:02:00:01:00:00" timos_line="slot=A chassis=SR-12e card=cpm5 " timos_license="cf3:\lic" management_address="172.16.5.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS.png" config="3" left="120" top="798">
+      <node id="1" name="R1" type="qemu" template="timoscpm" image="timoscpm-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="2" uuid="01ba3c19-7f51-4c0a-8bd2-ecdd23f0509f" firstmac="50:02:00:01:00:00" timos_line="slot=A chassis=SR-12e card=cpm5 " timos_license="cf3:\lic" management_address="172.16.5.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS.png" config="3" left="117" top="798">
         <interface id="0" name="Mgmt" type="ethernet" network_id="2"/>
         <interface id="1" name="SF" type="ethernet" network_id="10"/>
       </node>
@@ -61,20 +59,21 @@
       </node>
       <node id="13" name="R5-IOM2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="4" uuid="998d35f2-2ac9-4b15-b2e4-0dd2dc9fc0e6" firstmac="50:06:00:0d:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="1551" top="987">
         <interface id="1" name="SF" type="ethernet" network_id="17"/>
-        <interface id="2" name="2/1/1" type="ethernet" network_id="23"/>
+        <interface id="2" name="2/1/1" type="ethernet" network_id="14"/>
       </node>
       <node id="19" name="R1-IOM2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="10" uuid="1acf3932-f46d-4806-9b5d-091843b03dec" firstmac="50:06:00:13:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="201" top="765">
         <interface id="1" name="SF" type="ethernet" network_id="10"/>
         <interface id="2" name="2/1/1" type="ethernet" network_id="14"/>
+        <interface id="3" name="2/1/2" type="ethernet" network_id="15"/>
       </node>
       <node id="22" name="R4-IOM2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="4" uuid="ede32fb0-1197-421f-adc2-b91548fe63c0" firstmac="50:06:00:16:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="1575" top="507">
         <interface id="1" name="SF" type="ethernet" network_id="6"/>
-        <interface id="2" name="2/1/1" type="ethernet" network_id="23"/>
+        <interface id="2" name="2/1/1" type="ethernet" network_id="14"/>
         <interface id="3" name="2/1/2" type="ethernet" network_id="1"/>
       </node>
       <node id="23" name="R3-IOM2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="4" uuid="5f36c357-63fc-4f88-8eff-c205d7a07fa6" firstmac="50:06:00:17:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="585" top="1143">
         <interface id="1" name="SF" type="ethernet" network_id="16"/>
-        <interface id="2" name="2/1/1" type="ethernet" network_id="23"/>
+        <interface id="2" name="2/1/1" type="ethernet" network_id="14"/>
       </node>
       <node id="24" name="R2-IOM2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="4" uuid="901e8bad-7296-4032-8b1f-cee28be54a18" firstmac="50:06:00:18:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="447" top="510">
         <interface id="1" name="SF" type="ethernet" network_id="13"/>
@@ -83,16 +82,20 @@
       </node>
       <node id="4" name="r6-iom2" type="qemu" template="timosiom" image="timosiom-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="8192" ethernet="4" uuid="2ab5a03e-7c5d-4973-a9ff-c0bedd3dc20c" firstmac="50:06:00:04:00:00" timos_line="slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="1104" top="399">
         <interface id="1" name="SF" type="ethernet" network_id="11"/>
-        <interface id="2" name="2/1/1" type="ethernet" network_id="23"/>
+        <interface id="2" name="2/1/1" type="ethernet" network_id="14"/>
+        <interface id="3" name="2/1/2" type="ethernet" network_id="5"/>
       </node>
-      <node id="5" name="VSR-NRC-CPM" type="qemu" template="timoscpm" image="timoscpm-19.6.R0" console="telnet" cpu="4" cpulimit="0" ram="4096" ethernet="15" uuid="eab3079c-6a29-45ac-9e1a-c4fc32240347" firstmac="50:06:00:05:00:00" timos_line="chassis=SR-c12 slot=A card=cfm-xp-b slot=1 card=iom-xp-b mda/1=m10-1gb-xp-sfp" timos_license="cf3:/vsrnrcLicense.txt" management_address="1.1.1.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS.png" config="0" left="268" top="1077"/>
-      <node id="8" name="VSR-NRC-IOM" type="qemu" template="timosiom" image="timosiom-19.6.R0" console="telnet" cpu="2" cpulimit="0" ram="2048" ethernet="10" uuid="7c9e4b8a-2e17-45bd-a82f-de68ea99496b" firstmac="50:06:00:08:00:00" timos_line="slot=1 chassis=SR-c12 card=iom-xp-b mda/1=m10-1gb-xp-sfp" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="SROS linecard.png" config="0" left="267" top="1200"/>
-      <node id="10" name="VSR-NRC" type="qemu" template="timos" image="timos-19.6.R0" console="telnet" cpu="2" cpulimit="0" ram="2048" ethernet="6" uuid="a1791b42-db7c-117c-c52a-8cdb18937bf7" firstmac="50:06:00:0a:00:00" timos_line="slot=A chassis=SR-1 card=cpm-1 mda/1=me6-100gb-qsfp28" timos_license="cf3:\lic" management_address="1.1.1.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="Router.png" config="0" left="159" top="345"/>
-      <node id="14" name="7750SR" type="qemu" template="timos" image="timos-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="4096" ethernet="6" uuid="01ba3c19-7f51-4c0a-8bd2-ecdd23f0509f" firstmac="50:06:00:0e:00:00" timos_line="slot=A chassis=SR-1 card=cpm-1 card=iom4-e-b mda/1=me2-100gb-qsfp28" timos_license="cf3:\lic" management_address="1.1.1.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="Router.png" config="0" left="372" top="129"/>
+      <node id="10" name="VSR-NRC" type="qemu" template="timos" image="timos-19.6.R0" console="telnet" cpu="2" cpulimit="0" ram="4096" ethernet="14" uuid="a1791b42-db7c-117c-c52a-8cdb18937bf7" firstmac="50:06:00:0a:00:00" timos_line="slot=A chassis=SR-1 card=cpm-1 mda/1=me6-100gb-qsfp28" timos_license="cf3:\lic" management_address="1.1.1.1/24" delay="0" icon="Router.png" config="0" left="1137" top="816">
+        <interface id="1" name="p1/1/0" type="ethernet" network_id="14"/>
+        <interface id="3" name="p1/1/2" type="ethernet" network_id="15"/>
+      </node>
+      <node id="14" name="vsr8" type="qemu" template="timos" image="timos-19.5.R2" console="telnet" cpu="4" cpulimit="0" ram="4096" ethernet="6" uuid="01ba3c19-7f51-4c0a-8bd2-ecdd23f0509f" firstmac="50:06:00:0e:00:00" timos_line="slot=A chassis=SR-1 card=cpm-1 card=iom4-e-b mda/1=me6-100gb-qsfp28" timos_license="cf3:\lic" management_address="1.1.1.1/24" qemu_options=" -machine type=pc,accel=kvm -enable-kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc" delay="0" icon="Router.png" config="0" left="1449" top="222">
+        <interface id="1" name="p1/1/0" type="ethernet" network_id="14"/>
+        <interface id="2" name="p1/1/1" type="ethernet" network_id="5"/>
+      </node>
     </nodes>
     <networks>
       <network id="8" type="bridge" name="Net-7750SR11iface_2" left="705" top="772" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
-      <network id="23" type="pnet1" name="NetLab-Interconnect-PCE" left="1032" top="777" style="Solid" linkstyle="Straight" color="" label="" visibility="1"/>
       <network id="3" type="bridge" name="Net-R1-IOM1iface_2" left="123" top="361" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
       <network id="7" type="bridge" name="Net-R1-IOM1iface_3" left="357" top="253" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
       <network id="12" type="bridge" name="Net-R5-IOM1iface_2" left="792" top="535" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
@@ -106,7 +109,9 @@
       <network id="2" type="bridge" name="MGMT" left="915" top="1239" style="Solid" linkstyle="Straight" color="" label="" visibility="1"/>
       <network id="1" type="bridge" name="Net-r7-iom1iface_2" left="511" top="305" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
       <network id="4" type="bridge" name="Net-r7-iom1iface_3" left="423" top="389" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
-      <network id="14" type="pnet2" name="PCENet-VLAN4006" left="789" top="723" style="Solid" linkstyle="Straight" color="" label="" visibility="1"/>
+      <network id="14" type="pnet2" name="PCENet-VLAN4006" left="1122" top="726" style="Solid" linkstyle="Straight" color="" label="" visibility="1"/>
+      <network id="5" type="bridge" name="Net-vsr8iface_2" left="505" top="256" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
+      <network id="15" type="bridge" name="Net-VSR-NRCiface_3" left="858" top="195" style="Solid" linkstyle="Straight" color="" label="" visibility="0"/>
     </networks>
   </topology>
   <objects>
