@@ -1,0 +1,324 @@
+# Generated FRI SEP 06 16:40:48 2019 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "vsr-nrc1"
+        snmp
+            streaming
+                no shutdown
+            exit
+            packet-size 9216
+        exit
+        time
+            sntp
+                shutdown
+            exit
+            zone UTC
+        exit
+        bluetooth
+            module A
+            exit
+            power off
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            ftp-server
+            user "admin"
+                password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+                access console ftp
+                console
+                    member "administrative"
+                exit
+            exit
+            snmp
+                community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
+            exit
+            per-peer-queuing
+            dist-cpu-protection
+                policy "_default-access-policy" create
+                exit
+                policy "_default-network-policy" create
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            idle-timeout disable
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+        event-control "igmp" 2005 suppress
+        event-control "vrtr" 2034 generate
+        snmp-trap-group 98
+            description "5620sam"
+            trap-target "525400A8F5F3:main1" address 192.168.200.240 snmpv2c notify-community "privatetrap98"
+            trap-target "525400A8F5F3:main2" address 192.168.200.241 snmpv2c notify-community "privatetrap98"
+        exit
+        log-id 98
+            from main security change
+            to snmp 1024
+            no shutdown
+        exit
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom-1
+        mda 1
+            mda-type me6-100gb-qsfp28
+            no shutdown
+        exit
+        mda 2
+            mda-type me6-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "Connector Configuration"
+#--------------------------------------------------
+    port 1/1/c1
+        connector
+            breakout c10-10g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        shutdown
+    exit
+    port 1/1/c3
+        shutdown
+    exit
+    port 1/1/c4
+        shutdown
+    exit
+    port 1/1/c5
+        shutdown
+    exit
+    port 1/1/c6
+        shutdown
+    exit
+    port 1/2/c1
+        shutdown
+    exit
+    port 1/2/c2
+        shutdown
+    exit
+    port 1/2/c3
+        shutdown
+    exit
+    port 1/2/c4
+        shutdown
+    exit
+    port 1/2/c5
+        shutdown
+    exit
+    port 1/2/c6
+        shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/c1/1
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 1/1/c1/2
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/4
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/5
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/6
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/7
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/8
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/9
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/10
+        shutdown
+        ethernet
+        exit
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "n1-v1"
+            address 10.1.1.1/30
+            port 1/1/c1/1:10
+            no shutdown
+        exit
+        interface "system"
+            address 10.1.9.1/32
+            no shutdown
+        exit
+        autonomous-system 65505
+        router-id 10.1.9.1
+#--------------------------------------------------
+echo "MPLS Label Range Configuration"
+#--------------------------------------------------
+        mpls-labels
+            sr-labels start 20001 end 20200
+        exit
+#--------------------------------------------------
+echo "ISIS Configuration"
+#--------------------------------------------------
+        isis 0
+            system-id 0100.0100.9001
+            router-id 10.1.9.1
+            area-id 49.0001
+            database-export identifier 0 bgp-ls-identifier 0
+            traffic-engineering
+            advertise-router-capability area
+            segment-routing
+                prefix-sid-range global
+                no shutdown
+            exit
+            interface "system"
+                ipv4-node-sid index 7
+                no shutdown
+            exit
+            interface "n1-v1"
+                interface-type point-to-point
+                no shutdown
+            exit
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "Pcep Configuration"
+#--------------------------------------------------
+        pcep
+            pce
+                local-address 10.1.9.1
+                no shutdown
+            exit
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+#--------------------------------------------------
+echo "ISIS Configuration"
+#--------------------------------------------------
+        isis 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            family ipv4 bgp-ls
+            link-state-export-enable
+            group "ibgp"
+                type internal
+                local-as 65505
+                peer-as 65505
+                local-address 10.1.9.1
+                neighbor 1.1.10.1
+                    shutdown
+                exit
+                neighbor 1.1.10.2
+                exit
+                neighbor 1.1.10.3
+                    shutdown
+                exit
+                neighbor 1.1.10.4
+                    shutdown
+                exit
+                neighbor 1.1.10.5
+                    shutdown
+                exit
+                neighbor 1.1.10.6
+                    shutdown
+                exit
+                neighbor 10.1.9.2
+                    shutdown
+                exit
+            exit
+            no shutdown
+        exit
+    exit
+
+
+exit all
+
+# Finished FRI SEP 06 16:40:49 2019 UTC
