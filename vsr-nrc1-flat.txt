@@ -9,7 +9,38 @@
 /configure system security dist-cpu-protection policy "_default-network-policy" create
 /configure log
 /configure card 1 card-type iom-1
+/configure card 1 mda 1 mda-type me6-100gb-qsfp28
+/configure card 1 mda 1 no shutdown
 /configure card 1 no shutdown
+/configure port 1/1/c1 connector breakout c10-10g
+/configure port 1/1/c1 no shutdown
+/configure port 1/1/c2 shutdown
+/configure port 1/1/c3 shutdown
+/configure port 1/1/c4 shutdown
+/configure port 1/1/c5 shutdown
+/configure port 1/1/c6 shutdown
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/c1/1 no shutdown
+/configure port 1/1/c1/2 shutdown
+/configure port 1/1/c1/2 ethernet
+/configure port 1/1/c1/3 shutdown
+/configure port 1/1/c1/3 ethernet
+/configure port 1/1/c1/4 shutdown
+/configure port 1/1/c1/4 ethernet
+/configure port 1/1/c1/5 shutdown
+/configure port 1/1/c1/5 ethernet
+/configure port 1/1/c1/6 shutdown
+/configure port 1/1/c1/6 ethernet
+/configure port 1/1/c1/7 shutdown
+/configure port 1/1/c1/7 ethernet
+/configure port 1/1/c1/8 shutdown
+/configure port 1/1/c1/8 ethernet
+/configure port 1/1/c1/9 shutdown
+/configure port 1/1/c1/9 ethernet
+/configure port 1/1/c1/10 shutdown
+/configure port 1/1/c1/10 ethernet
 /configure system sync-if-timing begin
 /configure system sync-if-timing commit
 /configure router management

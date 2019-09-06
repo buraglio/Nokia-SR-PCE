@@ -1,8 +1,4 @@
-# TiMOS-B-19.5.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
-
-# Generated FRI SEP 06 16:13:53 2019 UTC
+# Generated FRI SEP 06 17:23:03 2019 UTC
 
 exit all
 configure
@@ -47,7 +43,95 @@ echo "Card Configuration"
 #--------------------------------------------------
     card 1
         card-type iom-1
+        mda 1
+            mda-type me6-100gb-qsfp28
+            no shutdown
+        exit
         no shutdown
+    exit
+#--------------------------------------------------
+echo "Connector Configuration"
+#--------------------------------------------------
+    port 1/1/c1
+        connector
+            breakout c10-10g
+        exit
+        no shutdown
+    exit
+    port 1/1/c2
+        shutdown
+    exit
+    port 1/1/c3
+        shutdown
+    exit
+    port 1/1/c4
+        shutdown
+    exit
+    port 1/1/c5
+        shutdown
+    exit
+    port 1/1/c6
+        shutdown
+    exit
+#--------------------------------------------------
+echo "Port Configuration"
+#--------------------------------------------------
+    port 1/1/c1/1
+        ethernet
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 1/1/c1/2
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/4
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/5
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/6
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/7
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/8
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/9
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c1/10
+        shutdown
+        ethernet
+        exit
     exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
@@ -89,3 +173,5 @@ echo "Router (Service Side) Configuration"
 
 
 exit all
+
+# Finished FRI SEP 06 17:23:05 2019 UTC
