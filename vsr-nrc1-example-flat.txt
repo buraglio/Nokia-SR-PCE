@@ -1,0 +1,110 @@
+/configure system name "vsr-nrc1"
+/configure system snmp streaming no shutdown
+/configure system snmp packet-size 9216
+/configure system time sntp shutdown
+/configure system time zone UTC
+/configure system bluetooth module A
+/configure system bluetooth power off
+/configure system security ftp-server
+/configure system security user "admin" password "$2y$10$TQrZlpBDra86.qoexZUzQeBXDY1FcdDhGWdD9lLxMuFyPVSm0OGy6"
+/configure system security user "admin" access console ftp
+/configure system security user "admin" console member "administrative"
+/configure system security snmp community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
+/configure system security per-peer-queuing
+/configure system security dist-cpu-protection policy "_default-access-policy" create
+/configure system security dist-cpu-protection policy "_default-access-policy"
+/configure system security dist-cpu-protection policy "_default-network-policy" create
+/configure system login-control idle-timeout disable
+/configure log event-control "igmp" 2005 suppress
+/configure log event-control "vrtr" 2034 generate
+/configure log snmp-trap-group 98 description "5620sam"
+/configure log snmp-trap-group 98 trap-target "525400A8F5F3:main1" address 192.168.200.240 snmpv2c notify-community "privatetrap98"
+/configure log snmp-trap-group 98 trap-target "525400A8F5F3:main2" address 192.168.200.241 snmpv2c notify-community "privatetrap98"
+/configure log log-id 98 from main security change
+/configure log log-id 98 to snmp 1024
+/configure log log-id 98 no shutdown
+/configure card 1 card-type iom-1
+/configure card 1 mda 1 mda-type me6-100gb-qsfp28
+/configure card 1 mda 1 no shutdown
+/configure card 1 mda 2 mda-type me6-100gb-qsfp28
+/configure card 1 mda 2 no shutdown
+/configure card 1 no shutdown
+/configure port 1/1/c1 connector breakout c10-10g
+/configure port 1/1/c1 no shutdown
+/configure port 1/1/c2 shutdown
+/configure port 1/1/c3 shutdown
+/configure port 1/1/c4 shutdown
+/configure port 1/1/c5 shutdown
+/configure port 1/1/c6 shutdown
+/configure port 1/2/c1 shutdown
+/configure port 1/2/c2 shutdown
+/configure port 1/2/c3 shutdown
+/configure port 1/2/c4 shutdown
+/configure port 1/2/c5 shutdown
+/configure port 1/2/c6 shutdown
+/configure port 1/1/c1/1 ethernet encap-type dot1q
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/c1/1 no shutdown
+/configure port 1/1/c1/2 shutdown
+/configure port 1/1/c1/2 ethernet
+/configure port 1/1/c1/3 shutdown
+/configure port 1/1/c1/3 ethernet
+/configure port 1/1/c1/4 shutdown
+/configure port 1/1/c1/4 ethernet
+/configure port 1/1/c1/5 shutdown
+/configure port 1/1/c1/5 ethernet
+/configure port 1/1/c1/6 shutdown
+/configure port 1/1/c1/6 ethernet
+/configure port 1/1/c1/7 shutdown
+/configure port 1/1/c1/7 ethernet
+/configure port 1/1/c1/8 shutdown
+/configure port 1/1/c1/8 ethernet
+/configure port 1/1/c1/9 shutdown
+/configure port 1/1/c1/9 ethernet
+/configure port 1/1/c1/10 shutdown
+/configure port 1/1/c1/10 ethernet
+/configure system sync-if-timing begin
+/configure system sync-if-timing commit
+/configure router management
+/configure router Base interface "n1-v1" address 10.1.1.1/30
+/configure router Base interface "n1-v1" port 1/1/c1/1:10
+/configure router Base interface "n1-v1" no shutdown
+/configure router Base interface "system" address 10.1.9.1/32
+/configure router Base interface "system" no shutdown
+/configure router Base autonomous-system 65505
+/configure router Base router-id 10.1.9.1
+/configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 system-id 0100.0100.9001
+/configure router Base isis 0 router-id 10.1.9.1
+/configure router Base isis 0 area-id 49.0001
+/configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
+/configure router Base isis 0 traffic-engineering
+/configure router Base isis 0 advertise-router-capability area
+/configure router Base isis 0 segment-routing prefix-sid-range global
+/configure router Base isis 0 segment-routing no shutdown
+/configure router Base isis 0 interface "system" ipv4-node-sid index 7
+/configure router Base isis 0 interface "system" no shutdown
+/configure router Base isis 0 interface "n1-v1" interface-type point-to-point
+/configure router Base isis 0 interface "n1-v1" no shutdown
+/configure router Base isis 0 no shutdown
+/configure router Base pcep pce local-address 10.1.9.1
+/configure router Base pcep pce no shutdown
+/configure service customer 1 name "1" create
+/configure service customer 1 name "1" description "Default customer"
+/configure router Base isis 0 no shutdown
+/configure router Base bgp family ipv4 bgp-ls
+/configure router Base bgp link-state-export-enable
+/configure router Base bgp group "ibgp" type internal
+/configure router Base bgp group "ibgp" local-as 65505
+/configure router Base bgp group "ibgp" peer-as 65505
+/configure router Base bgp group "ibgp" local-address 10.1.9.1
+/configure router Base bgp group "ibgp" neighbor 1.1.10.1 shutdown
+/configure router Base bgp group "ibgp" neighbor 1.1.10.2
+/configure router Base bgp group "ibgp" neighbor 1.1.10.3 shutdown
+/configure router Base bgp group "ibgp" neighbor 1.1.10.4 shutdown
+/configure router Base bgp group "ibgp" neighbor 1.1.10.5 shutdown
+/configure router Base bgp group "ibgp" neighbor 1.1.10.6 shutdown
+/configure router Base bgp group "ibgp" neighbor 10.1.9.2 shutdown
+/configure router Base bgp no shutdown

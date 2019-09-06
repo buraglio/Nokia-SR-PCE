@@ -10,3 +10,4 @@
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr5 > vsr5-flat.txt
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr6 > vsr6-flat.txt
 /usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr-nrc1 > vsr-nrc1-flat.txt
+/usr/bin/python ~/SynologyDrive/Dev/transcode-sros/trancode-sros.py vsr-nrc1-example > vsr-nrc1-example-flat.txt
