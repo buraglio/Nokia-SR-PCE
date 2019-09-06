@@ -14,7 +14,8 @@
 /configure card 1 no shutdown
 /configure port 1/1/c1 connector breakout c10-10g
 /configure port 1/1/c1 no shutdown
-/configure port 1/1/c2 shutdown
+/configure port 1/1/c2 connector breakout c10-10g
+/configure port 1/1/c2 no shutdown
 /configure port 1/1/c3 shutdown
 /configure port 1/1/c4 shutdown
 /configure port 1/1/c5 shutdown
@@ -23,7 +24,10 @@
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
 /configure port 1/1/c1/1 no shutdown
-/configure port 1/1/c1/2 shutdown
+/configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/c1/2 no shutdown
 /configure port 1/1/c1/2 ethernet
 /configure port 1/1/c1/3 shutdown
 /configure port 1/1/c1/3 ethernet
