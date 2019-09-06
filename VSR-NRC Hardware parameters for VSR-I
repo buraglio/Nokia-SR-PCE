@@ -1,10 +1,15 @@
 VSR-I hardware parameters
-
-chassis=SR-c12 slot=A card=cfm-xp-b slot=1 card=iom-xp-b mda/1=m10-1gb-xp-sfp
-
-Distributed VSR 
+---
+for VSR-NRC:
+slot=A chassis=SR-1 card=cpm-1 mda/1=me6-100gb-qsfp28
+---
+for VSR-I router node
+TBD
+---------
+Distributed VSR
+---
 CPM
 slot=A chassis=SR-12e card=cpm5
-
+---
 IOM
 slot=2 chassis=SR-12e card=iom4-e-b mda/1=me2-100gb-qsfp28

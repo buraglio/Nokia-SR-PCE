@@ -1,0 +1,91 @@
+# TiMOS-B-19.5.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
+
+# Generated FRI SEP 06 16:13:53 2019 UTC
+
+exit all
+configure
+#--------------------------------------------------
+echo "System Configuration"
+#--------------------------------------------------
+    system
+        name "vsr-nrc1"
+        time
+            sntp
+                shutdown
+            exit
+            zone UTC
+        exit
+        bluetooth
+            module A
+            exit
+            power off
+        exit
+    exit
+#--------------------------------------------------
+echo "System Security Configuration"
+#--------------------------------------------------
+    system
+        security
+            per-peer-queuing
+            dist-cpu-protection
+                policy "_default-access-policy" create
+                exit
+                policy "_default-network-policy" create
+                exit
+            exit
+        exit
+    exit
+#--------------------------------------------------
+echo "Log Configuration"
+#--------------------------------------------------
+    log
+    exit
+#--------------------------------------------------
+echo "Card Configuration"
+#--------------------------------------------------
+    card 1
+        card-type iom-1
+        no shutdown
+    exit
+#--------------------------------------------------
+echo "System Sync-If-Timing Configuration"
+#--------------------------------------------------
+    system
+        sync-if-timing
+            begin
+            commit
+        exit
+    exit
+#--------------------------------------------------
+echo "Management Router Configuration"
+#--------------------------------------------------
+    router management
+    exit
+
+#--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
+        interface "system"
+            no shutdown
+        exit
+    exit
+
+#--------------------------------------------------
+echo "Service Configuration"
+#--------------------------------------------------
+    service
+        customer 1 name "1" create
+            description "Default customer"
+        exit
+    exit
+#--------------------------------------------------
+echo "Router (Service Side) Configuration"
+#--------------------------------------------------
+    router Base
+    exit
+
+
+exit all

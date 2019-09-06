@@ -1,0 +1,18 @@
+/configure system name "vsr-nrc1"
+/configure system time sntp shutdown
+/configure system time zone UTC
+/configure system bluetooth module A
+/configure system bluetooth power off
+/configure system security per-peer-queuing
+/configure system security dist-cpu-protection policy "_default-access-policy" create
+/configure system security dist-cpu-protection policy "_default-access-policy"
+/configure system security dist-cpu-protection policy "_default-network-policy" create
+/configure log
+/configure card 1 card-type iom-1
+/configure card 1 no shutdown
+/configure system sync-if-timing begin
+/configure system sync-if-timing commit
+/configure router management
+/configure router Base interface "system" no shutdown
+/configure service customer 1 name "1" create
+/configure service customer 1 name "1" description "Default customer"
