@@ -28,7 +28,6 @@
 /configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge notification
 /configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
 /configure port 1/1/c1/2 no shutdown
-/configure port 1/1/c1/2 ethernet
 /configure port 1/1/c1/3 shutdown
 /configure port 1/1/c1/3 ethernet
 /configure port 1/1/c1/4 shutdown
@@ -45,9 +44,35 @@
 /configure port 1/1/c1/9 ethernet
 /configure port 1/1/c1/10 shutdown
 /configure port 1/1/c1/10 ethernet
+/configure port 1/1/c2/1 shutdown
+/configure port 1/1/c2/1 ethernet
+/configure port 1/1/c2/2 shutdown
+/configure port 1/1/c2/2 ethernet
+/configure port 1/1/c2/3 shutdown
+/configure port 1/1/c2/3 ethernet
+/configure port 1/1/c2/4 shutdown
+/configure port 1/1/c2/4 ethernet
+/configure port 1/1/c2/5 shutdown
+/configure port 1/1/c2/5 ethernet
+/configure port 1/1/c2/6 shutdown
+/configure port 1/1/c2/6 ethernet
+/configure port 1/1/c2/7 shutdown
+/configure port 1/1/c2/7 ethernet
+/configure port 1/1/c2/8 shutdown
+/configure port 1/1/c2/8 ethernet
+/configure port 1/1/c2/9 shutdown
+/configure port 1/1/c2/9 ethernet
+/configure port 1/1/c2/10 shutdown
+/configure port 1/1/c2/10 ethernet
 /configure system sync-if-timing begin
 /configure system sync-if-timing commit
 /configure router management
 /configure router Base interface "system" no shutdown
+/configure router Base interface "vsr-nrc-pce" address 172.16.0.254/24
+/configure router Base interface "vsr-nrc-pce" port 1/1/c1/1
+/configure router Base interface "vsr-nrc-pce" no shutdown
+/configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
+/configure router Base interface "vsr-nrc-vsr1" port 1/1/c1/2
+/configure router Base interface "vsr-nrc-vsr1" no shutdown
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"

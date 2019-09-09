@@ -1,4 +1,8 @@
-# Generated FRI SEP 06 17:23:03 2019 UTC
+# TiMOS-B-19.5.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
+
+# Generated MON SEP 09 19:39:23 2019 UTC
 
 exit all
 configure
@@ -59,7 +63,10 @@ echo "Connector Configuration"
         no shutdown
     exit
     port 1/1/c2
-        shutdown
+        connector
+            breakout c10-10g
+        exit
+        no shutdown
     exit
     port 1/1/c3
         shutdown
@@ -89,9 +96,16 @@ echo "Port Configuration"
         no shutdown
     exit
     port 1/1/c1/2
-        shutdown
         ethernet
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
         exit
+        no shutdown
     exit
     port 1/1/c1/3
         shutdown
@@ -133,6 +147,56 @@ echo "Port Configuration"
         ethernet
         exit
     exit
+    port 1/1/c2/1
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/2
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/3
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/4
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/5
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/6
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/7
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/8
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/9
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/c2/10
+        shutdown
+        ethernet
+        exit
+    exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
 #--------------------------------------------------
@@ -155,6 +219,16 @@ echo "Router (Network Side) Configuration"
         interface "system"
             no shutdown
         exit
+        interface "vsr-nrc-pce"
+            address 172.16.0.254/24
+            port 1/1/c1/1
+            no shutdown
+        exit
+        interface "vsr-nrc-vsr1"
+            address 10.1.1.253/30
+            port 1/1/c1/2
+            no shutdown
+        exit
     exit
 
 #--------------------------------------------------
@@ -173,5 +247,3 @@ echo "Router (Service Side) Configuration"
 
 
 exit all
-
-# Finished FRI SEP 06 17:23:05 2019 UTC

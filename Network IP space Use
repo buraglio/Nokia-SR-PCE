@@ -4,13 +4,13 @@ Network Utilization
 172.16.0.0/24 PCE Connectivity
 
 
-10.1.1.0/30 vsr1-vsr3
-10.1.1.16/30 vsr1-vsr2
-10.1.1.4/30 vsr2-vsr4
-10.1.1.8/30 vsr3-vsr5
-10.1.1.12/30 vsr6-vsr4
-10.1.1.20/30 vsr6-vsr2
-
+10.1.1.0/30 vsr1 - vsr3
+10.1.1.16/30 vsr1 - vsr2
+10.1.1.4/30 vsr2 - vsr4
+10.1.1.8/30 vsr3 - vsr5
+10.1.1.12/30 vsr6 - vsr4
+10.1.1.20/30 vsr6 - vsr2
+10.1.1.252/30 vsr-nrc - vsr1
 
 10.4.5.0/24 data plane
 172.16.0.0/24 control plane
@@ -41,3 +41,4 @@ Side B -
 Routers
 172.16.0.1/24 vsr1 PCE Connectivity
 172.16.0.2/24 vsr2 PCE Connectivity
+172.16.0.254/24 vsr-nrc PCE Connectivity
