@@ -58,6 +58,9 @@
 /configure router Base interface "vsr1-pce" address 172.16.0.1/24
 /configure router Base interface "vsr1-pce" port 2/1/1
 /configure router Base interface "vsr1-pce" no shutdown
+/configure router Base interface "vsr1-vsr-nrc" address 10.1.1.254/30
+/configure router Base interface "vsr1-vsr-nrc" port 2/1/2:5
+/configure router Base interface "vsr1-vsr-nrc" no shutdown
 /configure router Base interface "vsr1-vsr2" address 10.1.1.17/30
 /configure router Base interface "vsr1-vsr2" port 1/1/1:5
 /configure router Base interface "vsr1-vsr2" no shutdown
