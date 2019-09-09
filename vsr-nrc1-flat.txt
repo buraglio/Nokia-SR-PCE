@@ -20,10 +20,14 @@
 /configure port 1/1/c4 shutdown
 /configure port 1/1/c5 shutdown
 /configure port 1/1/c6 shutdown
+/configure port 1/1/c1/1 ethernet mode hybrid
+/configure port 1/1/c1/1 ethernet encap-type dot1q
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
 /configure port 1/1/c1/1 no shutdown
+/configure port 1/1/c1/2 ethernet mode hybrid
+/configure port 1/1/c1/2 ethernet encap-type dot1q
 /configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge notification
 /configure port 1/1/c1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
@@ -69,10 +73,10 @@
 /configure router management
 /configure router Base interface "system" no shutdown
 /configure router Base interface "vsr-nrc-pce" address 172.16.0.254/24
-/configure router Base interface "vsr-nrc-pce" port 1/1/c1/1
+/configure router Base interface "vsr-nrc-pce" port 1/1/c1/1:5
 /configure router Base interface "vsr-nrc-pce" no shutdown
 /configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
-/configure router Base interface "vsr-nrc-vsr1" port 1/1/c1/2
+/configure router Base interface "vsr-nrc-vsr1" port 1/1/c1/2:5
 /configure router Base interface "vsr-nrc-vsr1" no shutdown
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
