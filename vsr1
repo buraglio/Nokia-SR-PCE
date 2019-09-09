@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 03 21:44:35 2019 UTC
+# Generated MON SEP 09 19:46:13 2019 UTC
 
 exit all
 configure
@@ -126,7 +126,6 @@ echo "Port Configuration"
     exit
     port 2/1/2
         ethernet
-            encap-type dot1q
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -165,6 +164,11 @@ echo "Router (Network Side) Configuration"
         interface "vsr1-pce"
             address 172.16.0.1/24
             port 2/1/1
+            no shutdown
+        exit
+        interface "vsr1-vsr-nrc"
+            address 10.1.1.254/30
+            port 2/1/2
             no shutdown
         exit
         interface "vsr1-vsr2"
