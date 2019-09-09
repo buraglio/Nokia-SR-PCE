@@ -43,7 +43,7 @@
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 2/1/1 no shutdown
-/configure port 2/1/2 ethernet encap-type dot1q
+/configure port 2/1/2 ethernet encap-type null
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge notification
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
