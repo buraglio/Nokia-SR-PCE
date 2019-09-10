@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated MON SEP 09 20:02:35 2019 UTC
+# Generated TUE SEP 10 16:45:22 2019 UTC
 
 exit all
 configure
@@ -58,27 +58,39 @@ echo "Connector Configuration"
 #--------------------------------------------------
     port 1/1/c1
         connector
-            breakout c10-10g
+            breakout c1-100g
         exit
         no shutdown
     exit
     port 1/1/c2
         connector
-            breakout c10-10g
+            breakout c1-100g
         exit
         no shutdown
     exit
     port 1/1/c3
-        shutdown
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
     exit
     port 1/1/c4
-        shutdown
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
     exit
     port 1/1/c5
-        shutdown
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
     exit
     port 1/1/c6
-        shutdown
+        connector
+            breakout c1-100g
+        exit
+        no shutdown
     exit
 #--------------------------------------------------
 echo "Port Configuration"
@@ -97,7 +109,7 @@ echo "Port Configuration"
         exit
         no shutdown
     exit
-    port 1/1/c1/2
+    port 1/1/c2/1
         ethernet
             mode hybrid
             encap-type dot1q
@@ -111,95 +123,61 @@ echo "Port Configuration"
         exit
         no shutdown
     exit
-    port 1/1/c1/3
-        shutdown
+    port 1/1/c3/1
         ethernet
+            mode hybrid
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
         exit
+        no shutdown
     exit
-    port 1/1/c1/4
-        shutdown
+    port 1/1/c4/1
         ethernet
+            mode hybrid
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
         exit
+        no shutdown
     exit
-    port 1/1/c1/5
-        shutdown
+    port 1/1/c5/1
         ethernet
+            mode hybrid
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
         exit
+        no shutdown
     exit
-    port 1/1/c1/6
-        shutdown
+    port 1/1/c6/1
         ethernet
+            mode hybrid
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                exit
+            exit
         exit
-    exit
-    port 1/1/c1/7
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/8
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/9
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/10
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/1
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/2
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/3
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/4
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/5
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/6
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/7
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/8
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/9
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c2/10
-        shutdown
-        ethernet
-        exit
+        no shutdown
     exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
@@ -230,7 +208,7 @@ echo "Router (Network Side) Configuration"
         exit
         interface "vsr-nrc-vsr1"
             address 10.1.1.253/30
-            port 1/1/c1/2:5
+            port 1/1/c3/1:5
             no shutdown
         exit
     exit
