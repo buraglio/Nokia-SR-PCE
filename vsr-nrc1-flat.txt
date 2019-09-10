@@ -63,12 +63,41 @@
 /configure system sync-if-timing begin
 /configure system sync-if-timing commit
 /configure router management
+/configure router Base interface "system" address 100.64.0.254/32
 /configure router Base interface "system" no shutdown
 /configure router Base interface "vsr-nrc-pce" address 172.16.0.254/24
-/configure router Base interface "vsr-nrc-pce" port 1/1/c1/1:5
+/configure router Base interface "vsr-nrc-pce" port 1/1/c1/1:0
 /configure router Base interface "vsr-nrc-pce" no shutdown
 /configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
 /configure router Base interface "vsr-nrc-vsr1" port 1/1/c3/1:5
 /configure router Base interface "vsr-nrc-vsr1" no shutdown
+/configure router Base router-id 100.64.0.254
+/configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 area-id 49.0001
+/configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
+/configure router Base isis 0 traffic-engineering
+/configure router Base isis 0 advertise-router-capability area
+/configure router Base isis 0 loopfree-alternates remote-lfa node-protect
+/configure router Base isis 0 loopfree-alternates ti-lfa max-sr-frr-labels 1 node-protect
+/configure router Base isis 0 level 1 wide-metrics-only
+/configure router Base isis 0 level 2 wide-metrics-only
+/configure router Base isis 0 segment-routing prefix-sid-range global
+/configure router Base isis 0 segment-routing no shutdown
+/configure router Base isis 0 interface "system" ipv4-node-sid index 1
+/configure router Base isis 0 interface "system" no shutdown
+/configure router Base isis 0 interface "vsr-nrc-vsr1" interface-type point-to-point
+/configure router Base isis 0 interface "vsr-nrc-vsr1" level 1 metric 25000
+/configure router Base isis 0 interface "vsr-nrc-vsr1" level 2 metric 25000
+/configure router Base isis 0 interface "vsr-nrc-vsr1" no shutdown
+/configure router Base isis 0 no shutdown
+/configure router Base mpls shutdown
+/configure router Base mpls interface "system" no shutdown
+/configure router Base mpls interface "vsr-nrc-vsr1" no shutdown
+/configure router Base rsvp refresh-reduction-over-bypass enable
+/configure router Base rsvp interface "system" no shutdown
+/configure router Base rsvp interface "vsr-nrc-vsr1" no shutdown
+/configure router Base rsvp no shutdown
+/configure router Base mpls
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
+/configure router Base isis 0 no shutdown
