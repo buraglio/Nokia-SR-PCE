@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated MON SEP 09 22:18:33 2019 UTC
+# Generated TUE SEP 10 16:19:54 2019 UTC
 
 exit all
 configure
@@ -57,33 +57,46 @@ echo "Card Configuration"
 echo "Connector Configuration"
 #--------------------------------------------------
     port 1/1/c1
+        shutdown
         connector
-            breakout c10-10g
+            breakout c1-100g
         exit
-        no shutdown
     exit
     port 1/1/c2
         shutdown
+        connector
+            breakout c1-100g
+        exit
     exit
     port 1/1/c3
         shutdown
+        connector
+            breakout c1-100g
+        exit
     exit
     port 1/1/c4
         shutdown
+        connector
+            breakout c1-100g
+        exit
     exit
     port 1/1/c5
         shutdown
+        connector
+            breakout c1-100g
+        exit
     exit
     port 1/1/c6
         shutdown
+        connector
+            breakout c1-100g
+        exit
     exit
 #--------------------------------------------------
 echo "Port Configuration"
 #--------------------------------------------------
     port 1/1/c1/1
         ethernet
-            mode hybrid
-            encap-type dot1q
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -94,10 +107,8 @@ echo "Port Configuration"
         exit
         no shutdown
     exit
-    port 1/1/c1/2
+    port 1/1/c2/1
         ethernet
-            mode hybrid
-            encap-type dot1q
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -108,10 +119,8 @@ echo "Port Configuration"
         exit
         no shutdown
     exit
-    port 1/1/c1/3
+    port 1/1/c3/1
         ethernet
-            mode hybrid
-            encap-type dot1q
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -122,37 +131,17 @@ echo "Port Configuration"
         exit
         no shutdown
     exit
-    port 1/1/c1/4
+    port 1/1/c4/1
+        ethernet
+        exit
+        no shutdown
+    exit
+    port 1/1/c5/1
         shutdown
         ethernet
         exit
     exit
-    port 1/1/c1/5
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/6
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/7
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/8
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/9
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c1/10
+    port 1/1/c6/1
         shutdown
         ethernet
         exit
