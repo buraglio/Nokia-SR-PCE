@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 10 18:19:10 2019 UTC
+# Generated TUE SEP 10 18:34:09 2019 UTC
 
 exit all
 configure
@@ -246,7 +246,7 @@ echo "ISIS Configuration"
                 no shutdown
             exit
             interface "system"
-                ipv4-node-sid index 1
+                ipv4-node-sid index 7
                 no shutdown
             exit
             interface "vsr-nrc-vsr1"
@@ -260,6 +260,15 @@ echo "ISIS Configuration"
                 no shutdown
             exit
             no shutdown
+        exit
+#--------------------------------------------------
+echo "Pcep Configuration"
+#--------------------------------------------------
+        pcep
+            pce
+                local-address 100.64.0.254
+                no shutdown
+            exit
         exit
 #--------------------------------------------------
 echo "MPLS Configuration"
@@ -309,6 +318,21 @@ echo "Router (Service Side) Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            family ipv4 bgp-ls
+            link-state-export-enable
+            group "ibgp"
+                local-as 65505
+                peer-as 65505
+                local-address 100.64.0.254
+                neighbor 100.64.0.1
+                exit
+            exit
             no shutdown
         exit
     exit

@@ -83,13 +83,15 @@
 /configure router Base isis 0 level 2 wide-metrics-only
 /configure router Base isis 0 segment-routing prefix-sid-range global
 /configure router Base isis 0 segment-routing no shutdown
-/configure router Base isis 0 interface "system" ipv4-node-sid index 1
+/configure router Base isis 0 interface "system" ipv4-node-sid index 7
 /configure router Base isis 0 interface "system" no shutdown
 /configure router Base isis 0 interface "vsr-nrc-vsr1" interface-type point-to-point
 /configure router Base isis 0 interface "vsr-nrc-vsr1" level 1 metric 25000
 /configure router Base isis 0 interface "vsr-nrc-vsr1" level 2 metric 25000
 /configure router Base isis 0 interface "vsr-nrc-vsr1" no shutdown
 /configure router Base isis 0 no shutdown
+/configure router Base pcep pce local-address 100.64.0.254
+/configure router Base pcep pce no shutdown
 /configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
 /configure router Base mpls interface "vsr-nrc-vsr1" no shutdown
@@ -101,3 +103,10 @@
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
 /configure router Base isis 0 no shutdown
+/configure router Base bgp family ipv4 bgp-ls
+/configure router Base bgp link-state-export-enable
+/configure router Base bgp group "ibgp" local-as 65505
+/configure router Base bgp group "ibgp" peer-as 65505
+/configure router Base bgp group "ibgp" local-address 100.64.0.254
+/configure router Base bgp group "ibgp" neighbor 100.64.0.1
+/configure router Base bgp no shutdown
