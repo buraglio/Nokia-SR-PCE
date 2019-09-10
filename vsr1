@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 10 18:17:00 2019 UTC
+# Generated TUE SEP 10 18:38:12 2019 UTC
 
 exit all
 configure
@@ -155,6 +155,9 @@ echo "Management Router Configuration"
     exit
 
 #--------------------------------------------------
+echo "Router (Network Side) Configuration"
+#--------------------------------------------------
+    router Base
         interface "system"
             address 100.64.0.1/32
             no shutdown
@@ -313,6 +316,21 @@ echo "Router (Service Side) Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            no shutdown
+        exit
+#--------------------------------------------------
+echo "BGP Configuration"
+#--------------------------------------------------
+        bgp
+            family ipv4 bgp-ls
+            link-state-export-enable
+            group "ibgp"
+                local-as 65505
+                peer-as 65505
+                local-address 100.64.0.1
+                neighbor 100.64.0.254
+                exit
+            exit
             no shutdown
         exit
     exit
