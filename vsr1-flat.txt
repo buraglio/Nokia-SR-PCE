@@ -97,6 +97,7 @@
 /configure router Base isis 0 interface "vsr1-vsr-nrc" no shutdown
 /configure router Base isis 0 no shutdown
 /configure router Base pcep pcc local-address 100.64.0.1
+/configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure router Base pcep pcc no shutdown
 /configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
@@ -112,7 +113,8 @@
 /configure service customer 1 name "1" description "Default customer"
 /configure router Base isis 0 no shutdown
 /configure router Base bgp family ipv4 bgp-ls
-/configure router Base bgp link-state-export-enable
+/configure router Base bgp link-state-import-enable
+/configure router Base bgp group "ibgp" type internal
 /configure router Base bgp group "ibgp" local-as 65505
 /configure router Base bgp group "ibgp" peer-as 65505
 /configure router Base bgp group "ibgp" local-address 100.64.0.1

@@ -78,25 +78,26 @@
 /configure router Base isis 0 segment-routing no shutdown
 /configure router Base isis 0 interface "system" ipv4-node-sid index 1
 /configure router Base isis 0 interface "system" no shutdown
-/configure router Base isis 0 interface "vsr3-vsr5" interface-type point-to-point
-/configure router Base isis 0 interface "vsr3-vsr5" level 1 metric 1000
-/configure router Base isis 0 interface "vsr3-vsr5" level 2 metric 1000
-/configure router Base isis 0 interface "vsr3-vsr5" no shutdown
 /configure router Base isis 0 interface "vsr3-vsr1" interface-type point-to-point
 /configure router Base isis 0 interface "vsr3-vsr1" level 1 metric 25000
 /configure router Base isis 0 interface "vsr3-vsr1" level 2 metric 25000
 /configure router Base isis 0 interface "vsr3-vsr1" no shutdown
+/configure router Base isis 0 interface "vsr3-vsr5" interface-type point-to-point
+/configure router Base isis 0 interface "vsr3-vsr5" level 1 metric 1000
+/configure router Base isis 0 interface "vsr3-vsr5" level 2 metric 1000
+/configure router Base isis 0 interface "vsr3-vsr5" no shutdown
 /configure router Base isis 0 no shutdown
 /configure router Base pcep pcc local-address 100.64.0.3
+/configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure router Base pcep pcc no shutdown
 /configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
-/configure router Base mpls interface "vsr3-vsr5" no shutdown
 /configure router Base mpls interface "vsr3-vsr1" no shutdown
+/configure router Base mpls interface "vsr3-vsr5" no shutdown
 /configure router Base rsvp refresh-reduction-over-bypass enable
 /configure router Base rsvp interface "system" no shutdown
-/configure router Base rsvp interface "vsr3-vsr5" no shutdown
 /configure router Base rsvp interface "vsr3-vsr1" no shutdown
+/configure router Base rsvp interface "vsr3-vsr5" no shutdown
 /configure router Base rsvp no shutdown
 /configure router Base mpls
 /configure service customer 1 name "1" create

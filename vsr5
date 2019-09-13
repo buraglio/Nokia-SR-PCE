@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated FRI AUG 16 15:46:09 2019 UTC
+# Generated FRI SEP 13 21:18:21 2019 UTC
 
 exit all
 configure
@@ -212,16 +212,6 @@ echo "ISIS Configuration"
                 ipv4-node-sid index 1
                 no shutdown
             exit
-            interface "vsr5-vsr4"
-                interface-type point-to-point
-                level 1
-                    metric 1000
-                exit
-                level 2
-                    metric 1000
-                exit
-                no shutdown
-            exit
             interface "vsr5-vsr3"
                 interface-type point-to-point
                 level 1
@@ -229,6 +219,16 @@ echo "ISIS Configuration"
                 exit
                 level 2
                     metric 25000
+                exit
+                no shutdown
+            exit
+            interface "vsr5-vsr4"
+                interface-type point-to-point
+                level 1
+                    metric 1000
+                exit
+                level 2
+                    metric 1000
                 exit
                 no shutdown
             exit
@@ -240,6 +240,9 @@ echo "Pcep Configuration"
         pcep
             pcc
                 local-address 100.64.0.5
+                peer 100.64.0.254
+                    no shutdown
+                exit
                 no shutdown
             exit
         exit
@@ -251,10 +254,10 @@ echo "MPLS Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr5-vsr4"
+            interface "vsr5-vsr3"
                 no shutdown
             exit
-            interface "vsr5-vsr3"
+            interface "vsr5-vsr4"
                 no shutdown
             exit
         exit
@@ -266,10 +269,10 @@ echo "RSVP Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr5-vsr4"
+            interface "vsr5-vsr3"
                 no shutdown
             exit
-            interface "vsr5-vsr3"
+            interface "vsr5-vsr4"
                 no shutdown
             exit
             no shutdown

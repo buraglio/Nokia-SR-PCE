@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 10 18:38:12 2019 UTC
+# Generated FRI SEP 13 21:16:10 2019 UTC
 
 exit all
 configure
@@ -259,6 +259,9 @@ echo "Pcep Configuration"
         pcep
             pcc
                 local-address 100.64.0.1
+                peer 100.64.0.254
+                    no shutdown
+                exit
                 no shutdown
             exit
         exit
@@ -323,8 +326,9 @@ echo "BGP Configuration"
 #--------------------------------------------------
         bgp
             family ipv4 bgp-ls
-            link-state-export-enable
+            link-state-import-enable
             group "ibgp"
+                type internal
                 local-as 65505
                 peer-as 65505
                 local-address 100.64.0.1

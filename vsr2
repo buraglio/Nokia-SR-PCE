@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 03 22:00:51 2019 UTC
+# Generated FRI SEP 13 21:16:22 2019 UTC
 
 exit all
 configure
@@ -112,7 +112,7 @@ echo "Port Configuration"
     exit
     port 2/1/1
         ethernet
-            mode access
+            encap-type dot1q
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -166,12 +166,9 @@ echo "Router (Network Side) Configuration"
         interface "vsr1-pce1"
             no shutdown
         exit
-        interface "vsr2-pce"
-            address 172.16.0.2/24
-            no shutdown
-        exit
         interface "vsr2-pce1"
-            address 10.4.5.2/24
+            address 172.16.0.2/24
+            port 2/1/1:0
             no shutdown
         exit
         interface "vsr2-vsr1"
@@ -250,7 +247,10 @@ echo "Pcep Configuration"
 #--------------------------------------------------
         pcep
             pcc
-                local-address 100.64.10.2
+                local-address 100.64.0.2
+                peer 100.64.0.254
+                    no shutdown
+                exit
                 no shutdown
             exit
         exit
