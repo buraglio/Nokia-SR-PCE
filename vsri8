@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 10 16:19:54 2019 UTC
+# Generated FRI SEP 13 21:19:09 2019 UTC
 
 exit all
 configure
@@ -57,94 +57,22 @@ echo "Card Configuration"
 echo "Connector Configuration"
 #--------------------------------------------------
     port 1/1/c1
-        shutdown
-        connector
-            breakout c1-100g
-        exit
+        no shutdown
     exit
     port 1/1/c2
-        shutdown
-        connector
-            breakout c1-100g
-        exit
+        no shutdown
     exit
     port 1/1/c3
-        shutdown
-        connector
-            breakout c1-100g
-        exit
+        no shutdown
     exit
     port 1/1/c4
-        shutdown
-        connector
-            breakout c1-100g
-        exit
+        no shutdown
     exit
     port 1/1/c5
-        shutdown
-        connector
-            breakout c1-100g
-        exit
+        no shutdown
     exit
     port 1/1/c6
-        shutdown
-        connector
-            breakout c1-100g
-        exit
-    exit
-#--------------------------------------------------
-echo "Port Configuration"
-#--------------------------------------------------
-    port 1/1/c1/1
-        ethernet
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
-        exit
         no shutdown
-    exit
-    port 1/1/c2/1
-        ethernet
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
-        exit
-        no shutdown
-    exit
-    port 1/1/c3/1
-        ethernet
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
-        exit
-        no shutdown
-    exit
-    port 1/1/c4/1
-        ethernet
-        exit
-        no shutdown
-    exit
-    port 1/1/c5/1
-        shutdown
-        ethernet
-        exit
-    exit
-    port 1/1/c6/1
-        shutdown
-        ethernet
-        exit
     exit
 #--------------------------------------------------
 echo "System Sync-If-Timing Configuration"
@@ -167,6 +95,17 @@ echo "Router (Network Side) Configuration"
     router Base
         interface "system"
             no shutdown
+        exit
+#--------------------------------------------------
+echo "Pcep Configuration"
+#--------------------------------------------------
+        pcep
+            pcc
+                shutdown
+                peer 100.64.0.254
+                    no shutdown
+                exit
+            exit
         exit
     exit
 

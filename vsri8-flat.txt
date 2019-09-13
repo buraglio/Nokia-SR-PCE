@@ -12,39 +12,17 @@
 /configure card 1 mda 1 mda-type me6-100gb-qsfp28
 /configure card 1 mda 1 no shutdown
 /configure card 1 no shutdown
-/configure port 1/1/c1 shutdown
-/configure port 1/1/c1 connector breakout c1-100g
-/configure port 1/1/c2 shutdown
-/configure port 1/1/c2 connector breakout c1-100g
-/configure port 1/1/c3 shutdown
-/configure port 1/1/c3 connector breakout c1-100g
-/configure port 1/1/c4 shutdown
-/configure port 1/1/c4 connector breakout c1-100g
-/configure port 1/1/c5 shutdown
-/configure port 1/1/c5 connector breakout c1-100g
-/configure port 1/1/c6 shutdown
-/configure port 1/1/c6 connector breakout c1-100g
-/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
-/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
-/configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
-/configure port 1/1/c1/1 no shutdown
-/configure port 1/1/c2/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
-/configure port 1/1/c2/1 ethernet lldp dest-mac nearest-bridge notification
-/configure port 1/1/c2/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
-/configure port 1/1/c2/1 no shutdown
-/configure port 1/1/c3/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
-/configure port 1/1/c3/1 ethernet lldp dest-mac nearest-bridge notification
-/configure port 1/1/c3/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
-/configure port 1/1/c3/1 no shutdown
-/configure port 1/1/c4/1 ethernet
-/configure port 1/1/c4/1 no shutdown
-/configure port 1/1/c5/1 shutdown
-/configure port 1/1/c5/1 ethernet
-/configure port 1/1/c6/1 shutdown
-/configure port 1/1/c6/1 ethernet
+/configure port 1/1/c1 no shutdown
+/configure port 1/1/c2 no shutdown
+/configure port 1/1/c3 no shutdown
+/configure port 1/1/c4 no shutdown
+/configure port 1/1/c5 no shutdown
+/configure port 1/1/c6 no shutdown
 /configure system sync-if-timing begin
 /configure system sync-if-timing commit
 /configure router management
 /configure router Base interface "system" no shutdown
+/configure router Base pcep pcc shutdown
+/configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"

@@ -37,7 +37,7 @@
 /configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
 /configure port 1/1/2 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/2 no shutdown
-/configure port 2/1/1 ethernet mode access
+/configure port 2/1/1 ethernet encap-type dot1q
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge notification
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
@@ -57,9 +57,8 @@
 /configure router Base interface "system" address 100.64.10.2/32
 /configure router Base interface "system" no shutdown
 /configure router Base interface "vsr1-pce1" no shutdown
-/configure router Base interface "vsr2-pce" address 172.16.0.2/24
-/configure router Base interface "vsr2-pce" no shutdown
-/configure router Base interface "vsr2-pce1" address 10.4.5.2/24
+/configure router Base interface "vsr2-pce1" address 172.16.0.2/24
+/configure router Base interface "vsr2-pce1" port 2/1/1:0
 /configure router Base interface "vsr2-pce1" no shutdown
 /configure router Base interface "vsr2-vsr1" address 10.1.1.18/30
 /configure router Base interface "vsr2-vsr1" port 1/1/1:5
@@ -92,7 +91,8 @@
 /configure router Base isis 0 interface "vsr2-vsr4" level 2 metric 1000
 /configure router Base isis 0 interface "vsr2-vsr4" no shutdown
 /configure router Base isis 0 no shutdown
-/configure router Base pcep pcc local-address 100.64.10.2
+/configure router Base pcep pcc local-address 100.64.0.2
+/configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure router Base pcep pcc no shutdown
 /configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown

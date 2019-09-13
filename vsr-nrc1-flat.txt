@@ -71,6 +71,7 @@
 /configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
 /configure router Base interface "vsr-nrc-vsr1" port 1/1/c3/1:5
 /configure router Base interface "vsr-nrc-vsr1" no shutdown
+/configure router Base autonomous-system 65505
 /configure router Base router-id 100.64.0.254
 /configure router Base mpls-labels sr-labels start 20001 end 20200
 /configure router Base isis 0 area-id 49.0001
@@ -105,6 +106,7 @@
 /configure router Base isis 0 no shutdown
 /configure router Base bgp family ipv4 bgp-ls
 /configure router Base bgp link-state-export-enable
+/configure router Base bgp group "ibgp" type internal
 /configure router Base bgp group "ibgp" local-as 65505
 /configure router Base bgp group "ibgp" peer-as 65505
 /configure router Base bgp group "ibgp" local-address 100.64.0.254
