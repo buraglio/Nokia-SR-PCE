@@ -1,0 +1,35 @@
+## Last changed: 2019-09-18 20:19:34 UTC
+version 20190319.203446_builder.r1013243;
+system {
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+    ## Warning: missing mandatory statement(s): 'root-authentication'
+}
+interfaces {
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp;
+            }
+        }
+    }
+}
