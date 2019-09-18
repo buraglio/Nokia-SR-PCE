@@ -1,6 +1,6 @@
 # Nokia-SR-PCE
 Nokia PCE Segment Routing testing
-Included here are the Test configurations for PCE testing with Nokia SROS as well as the Topology and Eve-NG Lab XML File. This repo consists of a 6 Router Lab utilizing Nokia SROS 19 for testing of PCE and PCEP with external Segment routing controllers. This should provide enough configuration to test PCE and PCEP against the Nokia SR series vSIMs. This now includes the start of interoperability between the Nokia NFM-P and JunOS devices as well as the SROS based platform. 
+Included here are the Test configurations for PCE testing with Nokia SROS as well as the Topology and Eve-NG Lab XML File. This repo consists of a 6 Router Lab utilizing Nokia SROS 19 for testing of PCE and PCEP with external Segment routing controllers. This should provide enough configuration to test PCE and PCEP against the Nokia SR series vSIMs. This now includes the start of interoperability between the Nokia NFM-P and JunOS devices as well as the SROS based platform.
 
 ### Files and such
 
@@ -17,7 +17,7 @@ The Physical layout of this test environment is detailed in this diagram. There 
 ![Physical lab Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/netlab-virtlab-physical-pub.png?raw=true "Physical Lab Topology")
 
 The logical topology inside of eve-ng looks roughly like this.  
-![Virtual Router Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/PCE%20Eve-NG%20Test%20Topology.png?raw=true "Virtual Router Topology")
+![Virtual Router Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/netlab-virtlab-sr-virtualnet.png?raw=true "Virtual logical Router Topology")
 
 The physical topology inside of eve-ng that comprises the test network looks roughly like this.  
 ![Virtual Router Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/PCE%20Eve-NG%20Test%20Topology.png?raw=true "Virtual Router Topology")
