@@ -1,8 +1,10 @@
 /configure system name "vsr-nrc1"
+/configure system snmp streaming no shutdown
 /configure system time sntp shutdown
 /configure system time zone UTC
 /configure system bluetooth module A
 /configure system bluetooth power off
+/configure system security snmp community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
 /configure system security per-peer-queuing
 /configure system security dist-cpu-protection policy "_default-access-policy" create
 /configure system security dist-cpu-protection policy "_default-access-policy"
@@ -74,6 +76,8 @@
 /configure router Base autonomous-system 65505
 /configure router Base router-id 100.64.0.254
 /configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 system-id 0100.6400.0254
+/configure router Base isis 0 router-id 100.64.0.254
 /configure router Base isis 0 area-id 49.0001
 /configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
 /configure router Base isis 0 traffic-engineering

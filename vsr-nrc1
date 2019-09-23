@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated FRI SEP 13 21:15:25 2019 UTC
+# Generated MON SEP 23 18:49:34 2019 UTC
 
 exit all
 configure
@@ -11,6 +11,11 @@ echo "System Configuration"
 #--------------------------------------------------
     system
         name "vsr-nrc1"
+        snmp
+            streaming
+                no shutdown
+            exit
+        exit
         time
             sntp
                 shutdown
@@ -28,6 +33,9 @@ echo "System Security Configuration"
 #--------------------------------------------------
     system
         security
+            snmp
+                community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
+            exit
             per-peer-queuing
             dist-cpu-protection
                 policy "_default-access-policy" create
@@ -224,6 +232,8 @@ echo "MPLS Label Range Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            system-id 0100.6400.0254
+            router-id 100.64.0.254
             area-id 49.0001
             database-export identifier 0 bgp-ls-identifier 0
             traffic-engineering
