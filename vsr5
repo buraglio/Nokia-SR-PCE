@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated FRI SEP 13 21:18:21 2019 UTC
+# Generated TUE SEP 24 19:18:13 2019 UTC
 
 exit all
 configure
@@ -164,12 +164,12 @@ echo "Router (Network Side) Configuration"
             no shutdown
         exit
         interface "vsr5-vsr3"
-            address 10.1.1.2/30
+            address 10.1.1.10/30
             port 1/1/1:5
             no shutdown
         exit
         interface "vsr5-vsr4"
-            address 10.1.1.10/30
+            address 10.1.1.2/30
             port 1/1/2:5
             no shutdown
         exit

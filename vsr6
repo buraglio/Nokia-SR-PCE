@@ -1,9 +1,3 @@
-# TiMOS-C-19.5.R2 cpm/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
-# All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
-
-# Generated FRI SEP 13 21:18:49 2019 UTC
-
 exit all
 configure
 #--------------------------------------------------
@@ -215,10 +209,10 @@ echo "ISIS Configuration"
             interface "vsr6-vsr4"
                 interface-type point-to-point
                 level 1
-                    metric 1000
+                    metric 26000
                 exit
                 level 2
-                    metric 1000
+                    metric 26000
                 exit
                 no shutdown
             exit

@@ -62,6 +62,9 @@
 /configure router Base interface "vsr4-vsr5" address 10.1.1.1/30
 /configure router Base interface "vsr4-vsr5" port 1/1/1:5
 /configure router Base interface "vsr4-vsr5" no shutdown
+/configure router Base interface "vsr4-vsr6" address 10.1.1.13/30
+/configure router Base interface "vsr4-vsr6" port 2/1/2:5
+/configure router Base interface "vsr4-vsr6" no shutdown
 /configure router Base autonomous-system 65505
 /configure router Base ecmp 2
 /configure router Base router-id 100.64.0.4
@@ -86,6 +89,10 @@
 /configure router Base isis 0 interface "vsr4-vsr2" level 1 metric 1000
 /configure router Base isis 0 interface "vsr4-vsr2" level 2 metric 1000
 /configure router Base isis 0 interface "vsr4-vsr2" no shutdown
+/configure router Base isis 0 interface "vsr4-vsr6" interface-type point-to-point
+/configure router Base isis 0 interface "vsr4-vsr6" level 1 metric 26000
+/configure router Base isis 0 interface "vsr4-vsr6" level 2 metric 26000
+/configure router Base isis 0 interface "vsr4-vsr6" no shutdown
 /configure router Base isis 0 no shutdown
 /configure router Base pcep pcc local-address 100.64.0.4
 /configure router Base pcep pcc peer 100.64.0.254 no shutdown
