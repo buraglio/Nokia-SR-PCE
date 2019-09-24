@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated MON SEP 23 18:49:34 2019 UTC
+# Generated TUE SEP 24 16:34:13 2019 UTC
 
 exit all
 configure
@@ -46,9 +46,27 @@ echo "System Security Configuration"
         exit
     exit
 #--------------------------------------------------
+echo "System Login Control Configuration"
+#--------------------------------------------------
+    system
+        login-control
+            idle-timeout disable
+        exit
+    exit
+#--------------------------------------------------
 echo "Log Configuration"
 #--------------------------------------------------
     log
+        event-control "igmp" 2005 suppress
+        event-control "vrtr" 2034 generate
+        snmp-trap-group 98
+            description "5620sam"
+        exit
+        log-id 98
+            from main security change
+            to snmp 1024
+            no shutdown
+        exit
     exit
 #--------------------------------------------------
 echo "Card Configuration"
@@ -210,11 +228,6 @@ echo "Router (Network Side) Configuration"
             address 100.64.0.254/32
             no shutdown
         exit
-        interface "vsr-nrc-pce"
-            address 172.16.0.254/24
-            port 1/1/c1/1:0
-            no shutdown
-        exit
         interface "vsr-nrc-vsr1"
             address 10.1.1.253/30
             port 1/1/c3/1:5
@@ -319,6 +332,18 @@ echo "Service Configuration"
     service
         customer 1 name "1" create
             description "Default customer"
+        exit
+        ies 1 name "1" customer 1 create
+            interface "vsr-nrc-pce" create
+            exit
+        exit
+        ies 1 name "1" customer 1 create
+            interface "vsr-nrc-pce" create
+                address 172.16.0.254/24
+                sap 1/1/c1/1:0 create
+                exit
+            exit
+            no shutdown
         exit
     exit
 #--------------------------------------------------
