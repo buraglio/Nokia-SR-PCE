@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 24 19:18:13 2019 UTC
+# Generated TUE OCT 01 19:43:48 2019 UTC
 
 exit all
 configure
@@ -77,6 +77,14 @@ echo "Card Configuration"
         exit
         no shutdown
     exit
+    card 3
+        card-type iom4-e-b
+        mda 1
+            mda-type me2-100gb-qsfp28
+            no shutdown
+        exit
+        no shutdown
+    exit
 #--------------------------------------------------
 echo "Port Configuration"
 #--------------------------------------------------
@@ -126,6 +134,36 @@ echo "Port Configuration"
         no shutdown
     exit
     port 2/1/2
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 3/1/1
+        ethernet
+            encap-type dot1q
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
+        exit
+        no shutdown
+    exit
+    port 3/1/2
         ethernet
             encap-type dot1q
             lldp
