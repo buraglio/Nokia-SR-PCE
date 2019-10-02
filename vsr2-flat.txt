@@ -89,7 +89,7 @@
 /configure router Base interface "vsr2-vsr6" no shutdown
 /configure router Base autonomous-system 65505
 /configure router Base ecmp 2
-/configure router Base router-id 100.64.10.2
+/configure router Base router-id 100.64.0.2
 /configure router Base mpls-labels sr-labels start 20001 end 20200
 /configure router Base isis 0 area-id 49.0001
 /configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0

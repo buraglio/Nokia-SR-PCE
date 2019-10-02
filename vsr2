@@ -226,7 +226,7 @@ echo "Router (Network Side) Configuration"
         exit
         autonomous-system 65505
         ecmp 2
-        router-id 100.64.10.2
+        router-id 100.64.0.2
 #--------------------------------------------------
 echo "MPLS Label Range Configuration"
 #--------------------------------------------------
