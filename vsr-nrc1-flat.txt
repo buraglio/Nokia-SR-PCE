@@ -34,6 +34,7 @@
 /configure port 1/1/c6 no shutdown
 /configure port 1/1/c1/1 ethernet mode hybrid
 /configure port 1/1/c1/1 ethernet encap-type dot1q
+/configure port 1/1/c1/1 ethernet mtu 9000
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge notification
 /configure port 1/1/c1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
@@ -74,7 +75,8 @@
 /configure router Base interface "system" address 100.64.0.254/32
 /configure router Base interface "system" no shutdown
 /configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
-/configure router Base interface "vsr-nrc-vsr1" port 1/1/c3/1:5
+/configure router Base interface "vsr-nrc-vsr1" port 1/1/c1/1:0
+/configure router Base interface "vsr-nrc-vsr1" ip-mtu 1400
 /configure router Base interface "vsr-nrc-vsr1" no shutdown
 /configure router Base autonomous-system 65505
 /configure router Base router-id 100.64.0.254
@@ -82,6 +84,7 @@
 /configure router Base isis 0 system-id 0100.6400.0254
 /configure router Base isis 0 router-id 100.64.0.254
 /configure router Base isis 0 area-id 49.0001
+/configure router Base isis 0 lsp-mtu-size 490
 /configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
 /configure router Base isis 0 traffic-engineering
 /configure router Base isis 0 advertise-router-capability area
@@ -110,14 +113,6 @@
 /configure router Base mpls
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
-/configure service ies 1 name "1" customer 1 create
-/configure service ies 1 name "1" customer 1 interface "vsr-nrc-pce" create
-/configure service ies 1 name "1" customer 1 interface "vsr-nrc-pce"
-/configure service ies 1 name "1" customer 1 create
-/configure service ies 1 name "1" customer 1 interface "vsr-nrc-pce" create
-/configure service ies 1 name "1" customer 1 interface "vsr-nrc-pce" address 172.16.0.254/24
-/configure service ies 1 name "1" customer 1 interface "vsr-nrc-pce" sap 1/1/c1/1:0 create
-/configure service ies 1 name "1" customer 1 no shutdown
 /configure router Base isis 0 no shutdown
 /configure router Base bgp family ipv4 bgp-ls
 /configure router Base bgp link-state-export-enable

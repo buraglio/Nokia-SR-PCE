@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE SEP 24 16:34:13 2019 UTC
+# Generated WED OCT 02 16:18:02 2019 UTC
 
 exit all
 configure
@@ -125,6 +125,7 @@ echo "Port Configuration"
         ethernet
             mode hybrid
             encap-type dot1q
+            mtu 9000
             lldp
                 dest-mac nearest-bridge
                     admin-status tx-rx
@@ -230,7 +231,8 @@ echo "Router (Network Side) Configuration"
         exit
         interface "vsr-nrc-vsr1"
             address 10.1.1.253/30
-            port 1/1/c3/1:5
+            port 1/1/c1/1:0
+            ip-mtu 1400
             no shutdown
         exit
         autonomous-system 65505
@@ -248,6 +250,7 @@ echo "ISIS Configuration"
             system-id 0100.6400.0254
             router-id 100.64.0.254
             area-id 49.0001
+            lsp-mtu-size 490
             database-export identifier 0 bgp-ls-identifier 0
             traffic-engineering
             advertise-router-capability area
@@ -332,18 +335,6 @@ echo "Service Configuration"
     service
         customer 1 name "1" create
             description "Default customer"
-        exit
-        ies 1 name "1" customer 1 create
-            interface "vsr-nrc-pce" create
-            exit
-        exit
-        ies 1 name "1" customer 1 create
-            interface "vsr-nrc-pce" create
-                address 172.16.0.254/24
-                sap 1/1/c1/1:0 create
-                exit
-            exit
-            no shutdown
         exit
     exit
 #--------------------------------------------------
