@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated FRI OCT 04 20:10:03 2019 UTC
+# Generated FRI OCT 04 20:21:22 2019 UTC
 
 exit all
 configure
@@ -253,10 +253,10 @@ echo "ISIS Configuration"
             interface "vsr3-vsr1"
                 interface-type point-to-point
                 level 1
-                    metric 25000
+                    metric 1000
                 exit
                 level 2
-                    metric 25000
+                    metric 1000
                 exit
                 no shutdown
             exit
