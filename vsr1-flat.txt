@@ -44,6 +44,7 @@
 /configure port 2/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 2/1/1 no shutdown
 /configure port 2/1/2 ethernet encap-type dot1q
+/configure port 2/1/2 ethernet mtu 9000
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge notification
 /configure port 2/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
@@ -59,7 +60,8 @@
 /configure router Base interface "vsr1-pce" port 2/1/1
 /configure router Base interface "vsr1-pce" no shutdown
 /configure router Base interface "vsr1-vsr-nrc" address 10.1.1.254/30
-/configure router Base interface "vsr1-vsr-nrc" port 2/1/2:5
+/configure router Base interface "vsr1-vsr-nrc" port 2/1/2:0
+/configure router Base interface "vsr1-vsr-nrc" ip-mtu 1400
 /configure router Base interface "vsr1-vsr-nrc" no shutdown
 /configure router Base interface "vsr1-vsr2" address 10.1.1.17/30
 /configure router Base interface "vsr1-vsr2" port 1/1/1:5
@@ -71,6 +73,7 @@
 /configure router Base ecmp 2
 /configure router Base router-id 100.64.0.1
 /configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 router-id 100.64.0.1
 /configure router Base isis 0 area-id 49.0001
 /configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
 /configure router Base isis 0 traffic-engineering
@@ -83,6 +86,10 @@
 /configure router Base isis 0 segment-routing no shutdown
 /configure router Base isis 0 interface "system" ipv4-node-sid index 1
 /configure router Base isis 0 interface "system" no shutdown
+/configure router Base isis 0 interface "vsr1-vsr-nrc" interface-type point-to-point
+/configure router Base isis 0 interface "vsr1-vsr-nrc" level 1 metric 25000
+/configure router Base isis 0 interface "vsr1-vsr-nrc" level 2 metric 25000
+/configure router Base isis 0 interface "vsr1-vsr-nrc" no shutdown
 /configure router Base isis 0 interface "vsr1-vsr2" interface-type point-to-point
 /configure router Base isis 0 interface "vsr1-vsr2" level 1 metric 25000
 /configure router Base isis 0 interface "vsr1-vsr2" level 2 metric 25000
@@ -91,15 +98,10 @@
 /configure router Base isis 0 interface "vsr1-vsr3" level 1 metric 1000
 /configure router Base isis 0 interface "vsr1-vsr3" level 2 metric 1000
 /configure router Base isis 0 interface "vsr1-vsr3" no shutdown
-/configure router Base isis 0 interface "vsr1-vsr-nrc" interface-type point-to-point
-/configure router Base isis 0 interface "vsr1-vsr-nrc" level 1 metric 1000
-/configure router Base isis 0 interface "vsr1-vsr-nrc" level 2 metric 1000
-/configure router Base isis 0 interface "vsr1-vsr-nrc" no shutdown
 /configure router Base isis 0 no shutdown
 /configure router Base pcep pcc local-address 100.64.0.1
 /configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure router Base pcep pcc no shutdown
-/configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
 /configure router Base mpls interface "vsr1-vsr2" no shutdown
 /configure router Base mpls interface "vsr1-vsr3" no shutdown
@@ -108,7 +110,22 @@
 /configure router Base rsvp interface "vsr1-vsr2" no shutdown
 /configure router Base rsvp interface "vsr1-vsr3" no shutdown
 /configure router Base rsvp no shutdown
-/configure router Base mpls
+/configure router Base mpls path "loose" no shutdown
+/configure router Base mpls path "pce-init" no shutdown
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default default-path "pce-init"
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default cspf
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default max-sr-labels 6 additional-frr-labels 2
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default pce-report enable
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default no shutdown
+/configure router Base mpls lsp "to-vsr6-1" sr-te to 100.64.0.6
+/configure router Base mpls lsp "to-vsr6-1" sr-te cspf
+/configure router Base mpls lsp "to-vsr6-1" sr-te pce-computation
+/configure router Base mpls lsp "to-vsr6-1" sr-te pce-report enable
+/configure router Base mpls lsp "to-vsr6-1" sr-te pce-control
+/configure router Base mpls lsp "to-vsr6-1" sr-te primary "loose"
+/configure router Base mpls lsp "to-vsr6-1" sr-te no shutdown
+/configure router Base mpls pce-initiated-lsp sr-te no shutdown
+/configure router Base mpls no shutdown
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
 /configure router Base isis 0 no shutdown

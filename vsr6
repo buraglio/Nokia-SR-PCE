@@ -1,3 +1,9 @@
+# TiMOS-C-19.5.R2 cpm/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
+# All rights reserved. All use subject to applicable license agreements.
+# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
+
+# Generated FRI OCT 04 20:12:18 2019 UTC
+
 exit all
 configure
 #--------------------------------------------------
@@ -180,8 +186,8 @@ echo "MPLS Label Range Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            router-id 100.64.0.6
             area-id 49.0001
-            database-export identifier 0 bgp-ls-identifier 0
             traffic-engineering
             advertise-router-capability area
             loopfree-alternates
@@ -203,17 +209,7 @@ echo "ISIS Configuration"
                 no shutdown
             exit
             interface "system"
-                ipv4-node-sid index 1
-                no shutdown
-            exit
-            interface "vsr6-vsr4"
-                interface-type point-to-point
-                level 1
-                    metric 26000
-                exit
-                level 2
-                    metric 26000
-                exit
+                ipv4-node-sid index 6
                 no shutdown
             exit
             interface "vsr6-vsr2"
@@ -223,6 +219,16 @@ echo "ISIS Configuration"
                 exit
                 level 2
                     metric 25000
+                exit
+                no shutdown
+            exit
+            interface "vsr6-vsr4"
+                interface-type point-to-point
+                level 1
+                    metric 26000
+                exit
+                level 2
+                    metric 26000
                 exit
                 no shutdown
             exit
@@ -244,14 +250,13 @@ echo "Pcep Configuration"
 echo "MPLS Configuration"
 #--------------------------------------------------
         mpls
-            shutdown
             interface "system"
                 no shutdown
             exit
-            interface "vsr6-vsr4"
+            interface "vsr6-vsr2"
                 no shutdown
             exit
-            interface "vsr6-vsr2"
+            interface "vsr6-vsr4"
                 no shutdown
             exit
         exit
@@ -263,10 +268,10 @@ echo "RSVP Configuration"
             interface "system"
                 no shutdown
             exit
-            interface "vsr6-vsr4"
+            interface "vsr6-vsr2"
                 no shutdown
             exit
-            interface "vsr6-vsr2"
+            interface "vsr6-vsr4"
                 no shutdown
             exit
             no shutdown
@@ -275,6 +280,44 @@ echo "RSVP Configuration"
 echo "MPLS LSP Configuration"
 #--------------------------------------------------
         mpls
+            path "pce-init"
+                no shutdown
+            exit
+            path "loose"
+                no shutdown
+            exit
+            lsp-template "pce-init-template" pce-init-p2p-srte template-id default
+                shutdown
+                cspf
+                max-sr-labels 6 additional-frr-labels 2
+                pce-report enable
+            exit
+            lsp "to-vsr1-6" sr-te
+                to 100.64.0.1
+                cspf
+                pce-computation
+                pce-report enable
+                pce-control
+                primary "loose"
+                exit
+                no shutdown
+            exit
+            lsp "to-vs3" sr-te
+                to 100.64.0.3
+                cspf
+                pce-computation
+                pce-report enable
+                pce-control
+                primary "loose"
+                exit
+                no shutdown
+            exit
+            pce-initiated-lsp
+                sr-te
+                    no shutdown
+                exit
+            exit
+            no shutdown
         exit
     exit
 

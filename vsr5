@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE OCT 01 19:43:48 2019 UTC
+# Generated FRI OCT 04 20:11:15 2019 UTC
 
 exit all
 configure
@@ -207,7 +207,7 @@ echo "Router (Network Side) Configuration"
             no shutdown
         exit
         interface "vsr5-vsr4"
-            address 10.1.1.2/30
+            address 10.1.1.26/30
             port 1/1/2:5
             no shutdown
         exit
@@ -224,8 +224,8 @@ echo "MPLS Label Range Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            router-id 100.64.0.5
             area-id 49.0001
-            database-export identifier 0 bgp-ls-identifier 0
             traffic-engineering
             advertise-router-capability area
             loopfree-alternates
@@ -247,7 +247,7 @@ echo "ISIS Configuration"
                 no shutdown
             exit
             interface "system"
-                ipv4-node-sid index 1
+                ipv4-node-sid index 5
                 no shutdown
             exit
             interface "vsr5-vsr3"
@@ -288,7 +288,6 @@ echo "Pcep Configuration"
 echo "MPLS Configuration"
 #--------------------------------------------------
         mpls
-            shutdown
             interface "system"
                 no shutdown
             exit
@@ -319,6 +318,22 @@ echo "RSVP Configuration"
 echo "MPLS LSP Configuration"
 #--------------------------------------------------
         mpls
+            path "pce-init"
+                no shutdown
+            exit
+            lsp-template "pce-init-template" pce-init-p2p-srte template-id default
+                default-path "pce-init"
+                cspf
+                max-sr-labels 6 additional-frr-labels 2
+                pce-report enable
+                no shutdown
+            exit
+            pce-initiated-lsp
+                sr-te
+                    no shutdown
+                exit
+            exit
+            no shutdown
         exit
     exit
 
