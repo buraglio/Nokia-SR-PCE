@@ -97,8 +97,8 @@
 /configure router Base isis 0 interface "system" ipv4-node-sid index 3
 /configure router Base isis 0 interface "system" no shutdown
 /configure router Base isis 0 interface "vsr3-vsr1" interface-type point-to-point
-/configure router Base isis 0 interface "vsr3-vsr1" level 1 metric 25000
-/configure router Base isis 0 interface "vsr3-vsr1" level 2 metric 25000
+/configure router Base isis 0 interface "vsr3-vsr1" level 1 metric 1000
+/configure router Base isis 0 interface "vsr3-vsr1" level 2 metric 1000
 /configure router Base isis 0 interface "vsr3-vsr1" no shutdown
 /configure router Base isis 0 interface "vsr3-vsr5" interface-type point-to-point
 /configure router Base isis 0 interface "vsr3-vsr5" level 1 metric 1000
