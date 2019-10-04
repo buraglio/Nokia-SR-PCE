@@ -77,15 +77,15 @@
 /configure router Base interface "vsr5-vsr3" address 10.1.1.10/30
 /configure router Base interface "vsr5-vsr3" port 1/1/1:5
 /configure router Base interface "vsr5-vsr3" no shutdown
-/configure router Base interface "vsr5-vsr4" address 10.1.1.2/30
+/configure router Base interface "vsr5-vsr4" address 10.1.1.26/30
 /configure router Base interface "vsr5-vsr4" port 1/1/2:5
 /configure router Base interface "vsr5-vsr4" no shutdown
 /configure router Base autonomous-system 65505
 /configure router Base ecmp 2
 /configure router Base router-id 100.64.0.5
 /configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 router-id 100.64.0.5
 /configure router Base isis 0 area-id 49.0001
-/configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
 /configure router Base isis 0 traffic-engineering
 /configure router Base isis 0 advertise-router-capability area
 /configure router Base isis 0 loopfree-alternates remote-lfa node-protect
@@ -94,7 +94,7 @@
 /configure router Base isis 0 level 2 wide-metrics-only
 /configure router Base isis 0 segment-routing prefix-sid-range global
 /configure router Base isis 0 segment-routing no shutdown
-/configure router Base isis 0 interface "system" ipv4-node-sid index 1
+/configure router Base isis 0 interface "system" ipv4-node-sid index 5
 /configure router Base isis 0 interface "system" no shutdown
 /configure router Base isis 0 interface "vsr5-vsr3" interface-type point-to-point
 /configure router Base isis 0 interface "vsr5-vsr3" level 1 metric 25000
@@ -108,7 +108,6 @@
 /configure router Base pcep pcc local-address 100.64.0.5
 /configure router Base pcep pcc peer 100.64.0.254 no shutdown
 /configure router Base pcep pcc no shutdown
-/configure router Base mpls shutdown
 /configure router Base mpls interface "system" no shutdown
 /configure router Base mpls interface "vsr5-vsr3" no shutdown
 /configure router Base mpls interface "vsr5-vsr4" no shutdown
@@ -117,7 +116,14 @@
 /configure router Base rsvp interface "vsr5-vsr3" no shutdown
 /configure router Base rsvp interface "vsr5-vsr4" no shutdown
 /configure router Base rsvp no shutdown
-/configure router Base mpls
+/configure router Base mpls path "pce-init" no shutdown
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default default-path "pce-init"
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default cspf
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default max-sr-labels 6 additional-frr-labels 2
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default pce-report enable
+/configure router Base mpls lsp-template "pce-init-template" pce-init-p2p-srte template-id default no shutdown
+/configure router Base mpls pce-initiated-lsp sr-te no shutdown
+/configure router Base mpls no shutdown
 /configure service customer 1 name "1" create
 /configure service customer 1 name "1" description "Default customer"
 /configure router Base isis 0 no shutdown

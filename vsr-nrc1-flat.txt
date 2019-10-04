@@ -84,8 +84,6 @@
 /configure router Base isis 0 system-id 0100.6400.0254
 /configure router Base isis 0 router-id 100.64.0.254
 /configure router Base isis 0 area-id 49.0001
-/configure router Base isis 0 lsp-mtu-size 490
-/configure router Base isis 0 database-export identifier 0 bgp-ls-identifier 0
 /configure router Base isis 0 traffic-engineering
 /configure router Base isis 0 advertise-router-capability area
 /configure router Base isis 0 loopfree-alternates remote-lfa node-protect

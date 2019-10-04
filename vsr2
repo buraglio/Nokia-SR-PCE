@@ -2,7 +2,7 @@
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
 
-# Generated TUE OCT 01 19:40:36 2019 UTC
+# Generated FRI OCT 04 20:08:55 2019 UTC
 
 exit all
 configure
@@ -237,8 +237,8 @@ echo "MPLS Label Range Configuration"
 echo "ISIS Configuration"
 #--------------------------------------------------
         isis 0
+            router-id 100.64.0.2
             area-id 49.0001
-            database-export identifier 0 bgp-ls-identifier 0
             traffic-engineering
             advertise-router-capability area
             loopfree-alternates
@@ -260,7 +260,7 @@ echo "ISIS Configuration"
                 no shutdown
             exit
             interface "system"
-                ipv4-node-sid index 1
+                ipv4-node-sid index 2
                 no shutdown
             exit
             interface "vsr2-vsr1"
@@ -311,7 +311,6 @@ echo "Pcep Configuration"
 echo "MPLS Configuration"
 #--------------------------------------------------
         mpls
-            shutdown
             interface "system"
                 no shutdown
             exit
@@ -342,6 +341,7 @@ echo "RSVP Configuration"
 echo "MPLS LSP Configuration"
 #--------------------------------------------------
         mpls
+            no shutdown
         exit
     exit
 
