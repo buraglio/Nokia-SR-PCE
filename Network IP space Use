@@ -10,6 +10,7 @@ Network Utilization
 10.1.1.8/30 vsr3 - vsr5
 10.1.1.12/30 vsr6 - vsr4
 10.1.1.20/30 vsr6 - vsr2
+10.1.1.24/30 vsr4 - vsr5
 10.1.1.252/30 vsr-nrc - vsr1
 
 10.4.5.0/24 data plane
