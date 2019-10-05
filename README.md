@@ -13,7 +13,7 @@ Included here are the Test configurations for PCE testing with Nokia SROS as wel
 
 ### Diagrams and physical layout
 
-The Physical layout of this test environment is detailed in this diagram. There are two virtualization platforms - one a dedicated EVE-NG bare metal server with significant horsepower. The second is a VMWare cluster that runs the Nokia NFM-P, NRC-P, and NRC in a redundant manner. VSR-NRC and NRCP and NFMP will be added soon.
+The Physical layout of this test environment is detailed in this diagram. There are two virtualization platforms - one a dedicated EVE-NG bare metal server with significant horsepower. The second is a VMWare cluster that runs the Nokia NFM-P, NRC-P, NRCP, NFMP, and NRC in a redundant manner, which are out of scope for this repo. VSR-NRC runs in a raw KVM environment inside of Eve-NG until the BOF interfaces can be worked out in Eve for that particular hardware model.
 ![Physical lab Topology](https://github.com/buraglio/Nokia-SR-PCE/blob/master/netlab-virtlab-physical-pub.png?raw=true "Physical Lab Topology")
 
 The logical topology inside of eve-ng looks roughly like this.  
