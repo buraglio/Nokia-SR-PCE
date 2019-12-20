@@ -24,8 +24,8 @@
 /configure card 1 no shutdown
 /configure port 1/1/1 ethernet
 /configure port 1/1/1 no shutdown
-/configure port 1/1/2 shutdown
 /configure port 1/1/2 ethernet
+/configure port 1/1/2 no shutdown
 /configure port 1/1/3 shutdown
 /configure port 1/1/3 ethernet
 /configure port 1/1/4 shutdown
