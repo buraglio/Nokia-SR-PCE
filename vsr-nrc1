@@ -1,9 +1,7 @@
-# TiMOS-B-19.5.R2 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
+# TiMOS-B-19.10.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
 # All rights reserved. All use subject to applicable license agreements.
-# Built on Wed Jun 19 14:09:59 PDT 2019 by builder in /builds/c/195B/R2/panos/main
-
-# Generated FRI OCT 04 20:11:40 2019 UTC
-
+# Built on Wed Oct 30 21:21:34 PDT 2019 by builder in /builds/c/1910B/R1/panos/main
+# Generated FRI DEC 20 21:26:07 2019 UTC
 exit all
 configure
 #--------------------------------------------------
@@ -15,6 +13,8 @@ echo "System Configuration"
             streaming
                 no shutdown
             exit
+            shutdown
+            packet-size 9216
         exit
         time
             sntp
@@ -22,21 +22,22 @@ echo "System Configuration"
             exit
             zone UTC
         exit
-        bluetooth
-            module A
-            exit
-            power off
-        exit
     exit
 #--------------------------------------------------
 echo "System Security Configuration"
 #--------------------------------------------------
     system
         security
+            user "admin"
+                password "$2y$10$pw/U4qcpbDnIvL7t4caE2.fuv9LiMkTQOqPVFNwMgiAAWCkEAfNgC"
+                access console
+                console
+                    member "administrative"
+                exit
+            exit
             snmp
                 community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
             exit
-            per-peer-queuing
             dist-cpu-protection
                 policy "_default-access-policy" create
                 exit
@@ -72,147 +73,114 @@ echo "Log Configuration"
 echo "Card Configuration"
 #--------------------------------------------------
     card 1
-        card-type iom-1
+        card-type iom-v
         mda 1
-            mda-type me6-100gb-qsfp28
+            mda-type m20-v
             no shutdown
-        exit
-        no shutdown
-    exit
-#--------------------------------------------------
-echo "Connector Configuration"
-#--------------------------------------------------
-    port 1/1/c1
-        connector
-            breakout c1-100g
-        exit
-        no shutdown
-    exit
-    port 1/1/c2
-        connector
-            breakout c1-100g
-        exit
-        no shutdown
-    exit
-    port 1/1/c3
-        connector
-            breakout c1-100g
-        exit
-        no shutdown
-    exit
-    port 1/1/c4
-        connector
-            breakout c1-100g
-        exit
-        no shutdown
-    exit
-    port 1/1/c5
-        connector
-            breakout c1-100g
-        exit
-        no shutdown
-    exit
-    port 1/1/c6
-        connector
-            breakout c1-100g
         exit
         no shutdown
     exit
 #--------------------------------------------------
 echo "Port Configuration"
 #--------------------------------------------------
-    port 1/1/c1/1
+    port 1/1/1
         ethernet
-            mode hybrid
-            encap-type dot1q
-            mtu 9000
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
         no shutdown
     exit
-    port 1/1/c2/1
+    port 1/1/2
+        shutdown
         ethernet
-            mode hybrid
-            encap-type dot1q
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
-        no shutdown
     exit
-    port 1/1/c3/1
+    port 1/1/3
+        shutdown
         ethernet
-            mode hybrid
-            encap-type dot1q
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
-        no shutdown
     exit
-    port 1/1/c4/1
+    port 1/1/4
+        shutdown
         ethernet
-            mode hybrid
-            encap-type dot1q
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
-        no shutdown
     exit
-    port 1/1/c5/1
+    port 1/1/5
+        shutdown
         ethernet
-            mode hybrid
-            encap-type dot1q
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
-        no shutdown
     exit
-    port 1/1/c6/1
+    port 1/1/6
+        shutdown
         ethernet
-            mode hybrid
-            encap-type dot1q
-            lldp
-                dest-mac nearest-bridge
-                    admin-status tx-rx
-                    notification
-                    tx-tlvs port-desc sys-name sys-desc sys-cap
-                exit
-            exit
         exit
-        no shutdown
     exit
-#--------------------------------------------------
-echo "System Sync-If-Timing Configuration"
-#--------------------------------------------------
-    system
-        sync-if-timing
-            begin
-            commit
+    port 1/1/7
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/8
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/9
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/10
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/11
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/12
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/13
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/14
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/15
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/16
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/17
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/18
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/19
+        shutdown
+        ethernet
+        exit
+    exit
+    port 1/1/20
+        shutdown
+        ethernet
         exit
     exit
 #--------------------------------------------------
@@ -220,7 +188,6 @@ echo "Management Router Configuration"
 #--------------------------------------------------
     router management
     exit
-
 #--------------------------------------------------
 echo "Router (Network Side) Configuration"
 #--------------------------------------------------
@@ -231,7 +198,7 @@ echo "Router (Network Side) Configuration"
         exit
         interface "vsr-nrc-vsr1"
             address 10.1.1.253/30
-            port 1/1/c1/1:0
+            port 1/1/1
             ip-mtu 1400
             no shutdown
         exit
@@ -287,15 +254,6 @@ echo "ISIS Configuration"
             no shutdown
         exit
 #--------------------------------------------------
-echo "Pcep Configuration"
-#--------------------------------------------------
-        pcep
-            pce
-                local-address 100.64.0.254
-                no shutdown
-            exit
-        exit
-#--------------------------------------------------
 echo "MPLS Configuration"
 #--------------------------------------------------
         mpls
@@ -326,7 +284,6 @@ echo "MPLS LSP Configuration"
         mpls
         exit
     exit
-
 #--------------------------------------------------
 echo "Service Configuration"
 #--------------------------------------------------
@@ -362,6 +319,10 @@ echo "BGP Configuration"
             no shutdown
         exit
     exit
-
-
+#--------------------------------------------------
+echo "Log all events for service vprn Configuration"
+#--------------------------------------------------
+    log
+    exit
 exit all
+# Finished FRI DEC 20 21:26:24 2019 UTC
