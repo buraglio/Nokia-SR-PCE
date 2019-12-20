@@ -1,0 +1,111 @@
+/configure system name "vsr-nrc1"
+/configure system snmp streaming no shutdown
+/configure system snmp shutdown
+/configure system snmp packet-size 9216
+/configure system time sntp shutdown
+/configure system time zone UTC
+/configure system security user "admin" password "$2y$10$pw/U4qcpbDnIvL7t4caE2.fuv9LiMkTQOqPVFNwMgiAAWCkEAfNgC"
+/configure system security user "admin" access console
+/configure system security user "admin" console member "administrative"
+/configure system security snmp community "cV3ISTw2V5pbEWmVEA9jXgB/1EERXQA=" hash2 rwa version both
+/configure system security dist-cpu-protection policy "_default-access-policy" create
+/configure system security dist-cpu-protection policy "_default-access-policy"
+/configure system security dist-cpu-protection policy "_default-network-policy" create
+/configure system login-control idle-timeout disable
+/configure log event-control "igmp" 2005 suppress
+/configure log event-control "vrtr" 2034 generate
+/configure log snmp-trap-group 98 description "5620sam"
+/configure log log-id 98 from main security change
+/configure log log-id 98 to snmp 1024
+/configure log log-id 98 no shutdown
+/configure card 1 card-type iom-v
+/configure card 1 mda 1 mda-type m20-v
+/configure card 1 mda 1 no shutdown
+/configure card 1 no shutdown
+/configure port 1/1/1 ethernet
+/configure port 1/1/1 no shutdown
+/configure port 1/1/2 shutdown
+/configure port 1/1/2 ethernet
+/configure port 1/1/3 shutdown
+/configure port 1/1/3 ethernet
+/configure port 1/1/4 shutdown
+/configure port 1/1/4 ethernet
+/configure port 1/1/5 shutdown
+/configure port 1/1/5 ethernet
+/configure port 1/1/6 shutdown
+/configure port 1/1/6 ethernet
+/configure port 1/1/7 shutdown
+/configure port 1/1/7 ethernet
+/configure port 1/1/8 shutdown
+/configure port 1/1/8 ethernet
+/configure port 1/1/9 shutdown
+/configure port 1/1/9 ethernet
+/configure port 1/1/10 shutdown
+/configure port 1/1/10 ethernet
+/configure port 1/1/11 shutdown
+/configure port 1/1/11 ethernet
+/configure port 1/1/12 shutdown
+/configure port 1/1/12 ethernet
+/configure port 1/1/13 shutdown
+/configure port 1/1/13 ethernet
+/configure port 1/1/14 shutdown
+/configure port 1/1/14 ethernet
+/configure port 1/1/15 shutdown
+/configure port 1/1/15 ethernet
+/configure port 1/1/16 shutdown
+/configure port 1/1/16 ethernet
+/configure port 1/1/17 shutdown
+/configure port 1/1/17 ethernet
+/configure port 1/1/18 shutdown
+/configure port 1/1/18 ethernet
+/configure port 1/1/19 shutdown
+/configure port 1/1/19 ethernet
+/configure port 1/1/20 shutdown
+/configure port 1/1/20 ethernet
+/configure router management
+/configure router Base interface "system" address 100.64.0.254/32
+/configure router Base interface "system" no shutdown
+/configure router Base interface "vsr-nrc-vsr1" address 10.1.1.253/30
+/configure router Base interface "vsr-nrc-vsr1" port 1/1/1
+/configure router Base interface "vsr-nrc-vsr1" ip-mtu 1400
+/configure router Base interface "vsr-nrc-vsr1" no shutdown
+/configure router Base autonomous-system 65505
+/configure router Base router-id 100.64.0.254
+/configure router Base mpls-labels sr-labels start 20001 end 20200
+/configure router Base isis 0 system-id 0100.6400.0254
+/configure router Base isis 0 router-id 100.64.0.254
+/configure router Base isis 0 area-id 49.0001
+/configure router Base isis 0 traffic-engineering
+/configure router Base isis 0 advertise-router-capability area
+/configure router Base isis 0 loopfree-alternates remote-lfa node-protect
+/configure router Base isis 0 loopfree-alternates ti-lfa max-sr-frr-labels 1 node-protect
+/configure router Base isis 0 level 1 wide-metrics-only
+/configure router Base isis 0 level 2 wide-metrics-only
+/configure router Base isis 0 segment-routing prefix-sid-range global
+/configure router Base isis 0 segment-routing no shutdown
+/configure router Base isis 0 interface "system" ipv4-node-sid index 7
+/configure router Base isis 0 interface "system" no shutdown
+/configure router Base isis 0 interface "vsr-nrc-vsr1" interface-type point-to-point
+/configure router Base isis 0 interface "vsr-nrc-vsr1" level 1 metric 25000
+/configure router Base isis 0 interface "vsr-nrc-vsr1" level 2 metric 25000
+/configure router Base isis 0 interface "vsr-nrc-vsr1" no shutdown
+/configure router Base isis 0 no shutdown
+/configure router Base mpls shutdown
+/configure router Base mpls interface "system" no shutdown
+/configure router Base mpls interface "vsr-nrc-vsr1" no shutdown
+/configure router Base rsvp refresh-reduction-over-bypass enable
+/configure router Base rsvp interface "system" no shutdown
+/configure router Base rsvp interface "vsr-nrc-vsr1" no shutdown
+/configure router Base rsvp no shutdown
+/configure router Base mpls
+/configure service customer 1 name "1" create
+/configure service customer 1 name "1" description "Default customer"
+/configure router Base isis 0 no shutdown
+/configure router Base bgp family ipv4 bgp-ls
+/configure router Base bgp link-state-export-enable
+/configure router Base bgp group "ibgp" type internal
+/configure router Base bgp group "ibgp" local-as 65505
+/configure router Base bgp group "ibgp" peer-as 65505
+/configure router Base bgp group "ibgp" local-address 100.64.0.254
+/configure router Base bgp group "ibgp" neighbor 100.64.0.1
+/configure router Base bgp no shutdown
