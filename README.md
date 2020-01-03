@@ -1,6 +1,10 @@
 # Nokia-SR-PCE
 Nokia PCE Segment Routing testing
+<<<<<<< HEAD
 Included here are the Test configurations for PCE testing with Nokia SROS as well as the Topology and Eve-NG Lab XML File. This repo consists of a 6 Router Lab utilizing Nokia SROS 19 for testing of PCE and PCEP with external Segment routing controllers. This should provide enough configuration to test PCE and PCEP against the Nokia SR series vSIMs. This now includes the start of interoperability between the Nokia NFM-P and JunOS devices as well as the SROS based platform. Passwords for the VMs are admin, and the password for the vsr-nrc are the default from the documentation.  
+=======
+Included here are the Test configurations for PCE testing with Nokia SROS as well as the Topology and Eve-NG Lab XML File. This repo consists of a 6 Router Lab utilizing Nokia SROS 19 for testing of PCE and PCEP with external Segment routing controllers. This should provide enough configuration to test PCE and PCEP against the Nokia SR series vSIMs. This now includes the start of interoperability between the Nokia NFM-P and JunOS devices as well as the SROS based platform.
+>>>>>>> 6e9ed3038ee1525181569dffb67c31979cd8046e
 
 ### Files and such
 
