@@ -22,9 +22,17 @@
 /configure card 1 mda 1 mda-type m20-v
 /configure card 1 mda 1 no shutdown
 /configure card 1 no shutdown
-/configure port 1/1/1 ethernet
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/1 no shutdown
-/configure port 1/1/2 ethernet
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/2 no shutdown
 /configure port 1/1/3 shutdown
 /configure port 1/1/3 ethernet
@@ -72,7 +80,7 @@
 /configure router Base autonomous-system 65505
 /configure router Base router-id 100.64.0.253
 /configure router Base mpls-labels sr-labels start 20001 end 20200
-/configure router Base isis 0 system-id 0100.6400.0254
+/configure router Base isis 0 system-id 0100.6400.0253
 /configure router Base isis 0 router-id 100.64.0.253
 /configure router Base isis 0 area-id 49.0001
 /configure router Base isis 0 traffic-engineering

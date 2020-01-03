@@ -22,9 +22,17 @@
 /configure card 1 mda 1 mda-type m20-v
 /configure card 1 mda 1 no shutdown
 /configure card 1 no shutdown
-/configure port 1/1/1 ethernet
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/1 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/1 no shutdown
-/configure port 1/1/2 ethernet
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge admin-status tx-rx
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge notification
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-tlvs port-desc sys-name sys-desc sys-cap
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge tx-mgmt-address system system-ipv6
+/configure port 1/1/2 ethernet lldp dest-mac nearest-bridge port-id-subtype tx-if-name
 /configure port 1/1/2 no shutdown
 /configure port 1/1/3 shutdown
 /configure port 1/1/3 ethernet

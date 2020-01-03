@@ -1,7 +1,9 @@
 # TiMOS-B-19.10.R1 both/x86_64 Nokia 7750 SR Copyright (c) 2000-2019 Nokia.
 # All rights reserved. All use subject to applicable license agreements.
 # Built on Wed Oct 30 21:21:34 PDT 2019 by builder in /builds/c/1910B/R1/panos/main
-# Generated FRI DEC 20 21:26:07 2019 UTC
+
+# Generated FRI JAN 03 17:32:00 2020 UTC
+
 exit all
 configure
 #--------------------------------------------------
@@ -85,11 +87,29 @@ echo "Port Configuration"
 #--------------------------------------------------
     port 1/1/1
         ethernet
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
         exit
         no shutdown
     exit
     port 1/1/2
         ethernet
+            lldp
+                dest-mac nearest-bridge
+                    admin-status tx-rx
+                    notification
+                    tx-tlvs port-desc sys-name sys-desc sys-cap
+                    tx-mgmt-address system system-ipv6
+                    port-id-subtype tx-if-name
+                exit
+            exit
         exit
         no shutdown
     exit
@@ -188,6 +208,7 @@ echo "Management Router Configuration"
 #--------------------------------------------------
     router management
     exit
+
 #--------------------------------------------------
 echo "Router (Network Side) Configuration"
 #--------------------------------------------------
@@ -284,6 +305,7 @@ echo "MPLS LSP Configuration"
         mpls
         exit
     exit
+
 #--------------------------------------------------
 echo "Service Configuration"
 #--------------------------------------------------
@@ -319,10 +341,13 @@ echo "BGP Configuration"
             no shutdown
         exit
     exit
+
 #--------------------------------------------------
 echo "Log all events for service vprn Configuration"
 #--------------------------------------------------
     log
     exit
+
 exit all
-# Finished FRI DEC 20 21:26:24 2019 UTC
+
+# Finished FRI JAN 03 17:32:02 2020 UTC
